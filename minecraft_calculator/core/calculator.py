@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 from minecraft_calculator.core.recipe_manager import RecipeManager
 from minecraft_calculator.core.inventory import Inventory
-from minecraft_calculator.core.strategies import RecipeSelectionStrategy, FirstRecipeStrategy, SmartRecipeStrategy
+from minecraft_calculator.core.strategies import RecipeSelectionStrategy, FirstRecipeStrategy
 from minecraft_calculator.exceptions import ItemNotFoundError, InvalidInputError
 
 @dataclass
@@ -10,7 +10,6 @@ class CalculationResult:
     item_id: str
     name: str
     count: int
-    produced: int
     ingredients: Dict[str, int]
     remaining: Dict[str, int]
     children: List['CalculationResult'] = field(default_factory=list)
@@ -24,35 +23,20 @@ class MaterialCalculator:
     ):
         self._recipe_manager = recipe_manager
         self._inventory = inventory
-        self._strategy = strategy or SmartRecipeStrategy()
+        self._strategy = strategy or FirstRecipeStrategy()
         self._cache: Dict[str, Dict[str, int]] = {}
 
-    def calculate(self, name_or_id: str, count: int) -> CalculationResult:
-        if not name_or_id:
+    def calculate(self, item_id: str, count: int) -> CalculationResult:
+        if not item_id:
             raise InvalidInputError("物品ID不能为空")
         if count <= 0:
             raise InvalidInputError("数量必须为正整数")
         
-        item_id = self._recipe_manager.get_item_id(name_or_id)
         recipes = self._recipe_manager.get_recipes(item_id)
         if not recipes:
-            raise ItemNotFoundError(name_or_id)
+            raise ItemNotFoundError(item_id)
         
-        inv_count = self._inventory.get_count_by_id(item_id)
-        actual_needed = max(0, count - inv_count)
-        
-        if actual_needed == 0:
-            return CalculationResult(
-                item_id=item_id,
-                name=self._recipe_manager.get_item_name(item_id),
-                count=count,
-                produced=0,
-                ingredients={},
-                remaining={},
-                children=[]
-            )
-        
-        result = self._recursive_calc(item_id, actual_needed)
+        result = self._recursive_calc(item_id, count)
         self._deduct_inventory(result)
         return result
 
@@ -60,13 +44,11 @@ class MaterialCalculator:
         if visited is None:
             visited = set()
         
-        # If item is already in current calculation path, treat as base material
         if item_id in visited:
             return CalculationResult(
                 item_id=item_id,
                 name=self._recipe_manager.get_item_name(item_id),
                 count=count,
-                produced=count,
                 ingredients={},
                 remaining={},
                 children=[]
@@ -76,53 +58,27 @@ class MaterialCalculator:
         
         recipes = self._recipe_manager.get_recipes(item_id)
         if not recipes:
-            visited.remove(item_id)
             return CalculationResult(
                 item_id=item_id,
                 name=self._recipe_manager.get_item_name(item_id),
                 count=count,
-                produced=count,
                 ingredients={},
                 remaining={},
                 children=[]
             )
         
-        # Filter out recipes that would cause immediate cycles
-        valid_recipes = []
-        for recipe in recipes:
-            # Skip any recipe that requires items already in our visited path
-            has_cycle = any(ing_id in visited for ing_id in recipe.ingredients.keys())
-            if not has_cycle:
-                valid_recipes.append(recipe)
-        
-        # If no valid recipes, treat item as base material
-        if not valid_recipes:
-            visited.remove(item_id)
-            return CalculationResult(
-                item_id=item_id,
-                name=self._recipe_manager.get_item_name(item_id),
-                count=count,
-                produced=count,
-                ingredients={},
-                remaining={},
-                children=[]
-            )
-        
-        recipe = self._strategy.select(valid_recipes)
+        recipe = self._strategy.select(recipes)
         if recipe is None:
-            visited.remove(item_id)
             return CalculationResult(
                 item_id=item_id,
                 name=self._recipe_manager.get_item_name(item_id),
                 count=count,
-                produced=count,
                 ingredients={},
                 remaining={},
                 children=[]
             )
         
         multiplier = (count + recipe.result - 1) // recipe.result
-        produced = multiplier * recipe.result
         
         ingredients: Dict[str, int] = {}
         for ing_id, ing_count in recipe.ingredients.items():
@@ -139,7 +95,6 @@ class MaterialCalculator:
             item_id=item_id,
             name=self._recipe_manager.get_item_name(item_id),
             count=count,
-            produced=produced,
             ingredients=ingredients,
             remaining=dict(ingredients),
             children=children
@@ -147,7 +102,7 @@ class MaterialCalculator:
 
     def _deduct_inventory(self, result: CalculationResult) -> None:
         for ing_id, ing_count in list(result.ingredients.items()):
-            inv_count = self._inventory.get_count_by_id(ing_id)
+            inv_count = self._inventory.get_count(ing_id)
             result.remaining[ing_id] = max(0, ing_count - inv_count)
         
         for child in result.children:

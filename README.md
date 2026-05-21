@@ -34,13 +34,13 @@ pip install .
 计算制作 1 个红石比较器所需的材料：
 
 ```bash
-mmc calc "红石比较器" 1
+mcc calc "红石比较器" 1
 ```
 
 或者使用物品 ID：
 
 ```bash
-mmc calc redstone_comparator 1
+mcc calc redstone_comparator 1
 ```
 
 ### 使用库存
@@ -48,19 +48,19 @@ mmc calc redstone_comparator 1
 1. 添加物品到库存：
 
 ```bash
-mmc inventory add "石英" 10
+mcc inventory add "石英" 10
 ```
 
 2. 查看库存：
 
 ```bash
-mmc inventory list
+mcc inventory list
 ```
 
 3. 使用库存计算材料：
 
 ```bash
-mmc calc "红石比较器" 1 --inventory
+mcc calc "红石比较器" 1 --inventory
 ```
 
 ### 查看配方
@@ -68,13 +68,13 @@ mmc calc "红石比较器" 1 --inventory
 查看物品的配方：
 
 ```bash
-mmc recipe show "红石中继器"
+mcc recipe show "红石中继器"
 ```
 
 查看所有可用物品：
 
 ```bash
-mmc recipe list
+mcc recipe list
 ```
 
 ### 模组支持
@@ -82,7 +82,7 @@ mmc recipe list
 加载自定义模组配方：
 
 ```bash
-mmc mod load my_mod
+mcc mod load my_mod
 ```
 
 ## 完整命令参考
@@ -90,7 +90,7 @@ mmc mod load my_mod
 ### `calc` - 计算材料
 
 ```bash
-mmc calc <物品名称/ID> <数量> [选项]
+mcc calc <物品名称/ID> <数量> [选项]
 ```
 
 选项：
@@ -100,25 +100,25 @@ mmc calc <物品名称/ID> <数量> [选项]
 ### `inventory` - 库存管理
 
 ```bash
-mmc inventory add <物品名称/ID> <数量> [--file FILE]  # 添加物品
-mmc inventory remove <物品名称/ID> <数量> [--file FILE]  # 移除物品
-mmc inventory list [--file FILE]                        # 查看库存
-mmc inventory clear [--file FILE]                       # 清空库存
+mcc inventory add <物品名称/ID> <数量> [--file FILE]  # 添加物品
+mcc inventory remove <物品名称/ID> <数量> [--file FILE]  # 移除物品
+mcc inventory list [--file FILE]                        # 查看库存
+mcc inventory clear [--file FILE]                       # 清空库存
 ```
 
 ### `recipe` - 配方管理
 
 ```bash
-mmc recipe list [--mod MOD]  # 列出所有可用物品
-mmc recipe show <物品>        # 显示物品配方
+mcc recipe list [--mod MOD]  # 列出所有可用物品
+mcc recipe show <物品>        # 显示物品配方
 ```
 
 ### `mod` - 模组管理
 
 ```bash
-mmc mod list              # 列出已加载的模组
-mmc mod load <模组ID>    # 加载模组
-mmc mod unload <模组ID>  # 卸载模组
+mcc mod list              # 列出已加载的模组
+mcc mod load <模组ID>    # 加载模组
+mcc mod unload <模组ID>  # 卸载模组
 ```
 
 ## 添加自定义配方
