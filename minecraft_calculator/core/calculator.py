@@ -18,6 +18,7 @@ class CalculationResult:
     produced: int
     ingredients: Dict[str, int]
     remaining: Dict[str, int]
+    inventory_used: Dict[str, int] = field(default_factory=dict)
     children: List["CalculationResult"] = field(default_factory=list)
 
 
@@ -182,6 +183,7 @@ class MaterialCalculator:
             ingredients[ing_id] = ing_count * multiplier
 
         remaining = {}
+        inventory_used = {}
         children: List[CalculationResult] = []
 
         # 创建当前层级的临时库存副本，避免修改上一级的库存
@@ -197,6 +199,7 @@ class MaterialCalculator:
                 current_temp[ing_id] = avl - use
                 if current_temp[ing_id] == 0:
                     del current_temp[ing_id]
+                inventory_used[ing_id] = use
 
             actual = ing_total - use
             remaining[ing_id] = actual
@@ -206,6 +209,11 @@ class MaterialCalculator:
                     ing_id, actual, current_temp, visited.copy()
                 )
                 children.append(child)
+                # 收集子节点的库存使用情况
+                for child_ing_id, child_use in child.inventory_used.items():
+                    inventory_used[child_ing_id] = (
+                        inventory_used.get(child_ing_id, 0) + child_use
+                    )
 
         visited.remove(item_id)
         return CalculationResult(
@@ -215,5 +223,6 @@ class MaterialCalculator:
             produced=produced,
             ingredients=ingredients,
             remaining=remaining,
+            inventory_used=inventory_used,
             children=children,
         ), current_temp

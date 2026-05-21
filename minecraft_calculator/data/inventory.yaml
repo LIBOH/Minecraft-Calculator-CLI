@@ -1,9 +1,6 @@
 items:
-  planks: 10
-  quartz: 20
-  redstone: 3
-  redstone_comparator: 13
-  redstone_torch: 2
-  stick: 100
-  stone: 50
-last_updated: '2026-05-22T03:45:48.588644'
+  logs: 1
+  planks: 2
+  redstone: 1
+  redstone_torch: 1
+last_updated: '2026-05-22T04:55:07.699224'

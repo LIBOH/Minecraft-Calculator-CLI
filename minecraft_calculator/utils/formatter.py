@@ -62,9 +62,17 @@ class OutputFormatter:
             stack_info = OutputFormatter.format_stack(
                 result.remaining.get(ing_id, 0), child_produced, stack_size
             )
-            lines.append(
-                f"{prefix}{level_color}  {ing_name}: {stack_info}{Style.RESET_ALL}"
-            )
+
+            # Check if this ingredient was partially or fully from inventory
+            inv_used = result.inventory_used.get(ing_id, 0)
+            if inv_used > 0:
+                lines.append(
+                    f"{prefix}{level_color}  {ing_name}: {stack_info} {Fore.WHITE}(从库存使用 {inv_used} 个){Style.RESET_ALL}"
+                )
+            else:
+                lines.append(
+                    f"{prefix}{level_color}  {ing_name}: {stack_info}{Style.RESET_ALL}"
+                )
 
         if result.children:
             lines.append(f"{prefix}{level_color}{'-' * 40}{Style.RESET_ALL}")
