@@ -1,12 +1,12 @@
 [project]
-name = "minecraft-material-calculator"
+name = "MCC"
 version = "1.0.0"
 description = "Minecraft 材料计算器 - 计算制作物品所需的材料，支持库存管理和模组扩展"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name"}
+    {name = "LIBOH"}
 ]
 keywords = ["minecraft", "calculator", "material", "recipe", "inventory"]
 classifiers = [
