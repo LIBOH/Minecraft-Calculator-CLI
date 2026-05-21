@@ -42,3 +42,30 @@ class MinTotalCountStrategy(RecipeSelectionStrategy):
                 selected = recipe
         
         return selected
+
+class SmartRecipeStrategy(RecipeSelectionStrategy):
+    """
+    A smart strategy that prefers recipes that are more efficient,
+    and avoids recipes that create cycles.
+    """
+    def select(self, recipes: List[Recipe]) -> Optional[Recipe]:
+        if not recipes:
+            return None
+        
+        # Prefer recipes that produce more output per unit ingredient (more efficient)
+        best_efficiency = -1
+        best_recipe = None
+        
+        for recipe in recipes:
+            # Efficiency is (result count) / (total ingredients)
+            total_ingredients = sum(recipe.ingredients.values())
+            if total_ingredients == 0:
+                efficiency = 0
+            else:
+                efficiency = recipe.result / total_ingredients
+            
+            if efficiency > best_efficiency:
+                best_efficiency = efficiency
+                best_recipe = recipe
+        
+        return best_recipe

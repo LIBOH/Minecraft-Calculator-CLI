@@ -1,172 +1,300 @@
-# Minecraft 材料计算器
+# Minecraft 材料计算器 CLI
 
-一个强大的 Minecraft 物品材料计算器，帮助你计算制作任意物品所需的所有材料，支持库存管理和模组扩展。
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+  <img src="https://img.shields.io/badge/包管理-uv-orange.svg" alt="Package Manager">
+</p>
+
+一款强大的 Minecraft 材质计算命令行工具，帮助玩家快速计算合成物品所需的材料，支持库存管理、模组扩展和智能配方选择。
+
+---
 
 ## 功能特性
 
-- 🧮 **智能材料计算** - 递归计算制作物品所需的所有基础材料
-- 📦 **库存管理** - 记录你现有的物品，自动扣除库存中的材料
-- 🧩 **模组支持** - 轻松添加自定义模组配方
-- 🌈 **彩色输出** - 美观的彩色终端输出
-- 🔄 **多配方选择** - 智能选择最优配方
-- 📊 **堆叠显示** - 自动计算材料的堆叠数量
+### 🎯 核心功能
+
+- **智能材料计算** - 递归计算任意物品的完整材料需求树
+- **库存管理** - 管理个人物品库存，自动扣除已有材料
+- **多模组支持** - 通过 YAML 文件轻松添加和管理模组配方
+- **配方可视化** - 查看任意物品的合成配方详情
+
+### 🧠 智能特性
+
+- **高效配方选择** - 自动选择产出效率最高的配方
+- **循环检测** - 智能检测并避免配方循环依赖
+- **堆叠显示** - 自动将材料数量转换为堆叠格式 (如 `1 x 64 + 23`)
+- **多语言支持** - 支持物品名称和 ID 两种查询方式
+
+### 🎨 用户体验
+
+- **彩色终端输出** - 层次分明的彩色显示
+- **中文界面** - 全中文提示信息
+- **清晰的错误处理** - 友好的错误提示
+
+---
 
 ## 安装
 
-### 从 PyPI 安装（推荐）
+### 前置要求
+
+- Python 3.10 或更高版本
+- uv 包管理器
+
+### 使用 uv 安装
 
 ```bash
-pip install minecraft-material-calculator
+# 克隆项目
+git clone https://github.com/LIBOH/Minecraft-Calculaor-CLI.git
+cd Minecraft-Calculaor-CLI
+
+# 使用 uv 安装依赖
+uv sync
+
+# 安装为命令行工具
+uv pip install -e .
 ```
 
-### 从源码安装
+安装完成后，你可以使用 `mcc` 命令运行工具：
 
 ```bash
-git clone https://github.com/yourusername/minecraft-material-calculator.git
-cd minecraft-material-calculator
-pip install .
+mcc --help
 ```
+
+---
 
 ## 快速开始
 
-### 计算材料
+### 计算材料需求
 
-计算制作 1 个红石比较器所需的材料：
-
-```bash
-mcc calc "红石比较器" 1
-```
-
-或者使用物品 ID：
+计算制作 10 个红石中继器所需的材料：
 
 ```bash
-mcc calc redstone_comparator 1
+mcc calc redstone_repeater 10
 ```
 
-### 使用库存
-
-1. 添加物品到库存：
+使用库存计算（自动扣除已有材料）：
 
 ```bash
-mcc inventory add "石英" 10
+mcc calc redstone_repeater 10 --inventory
 ```
 
-2. 查看库存：
+### 管理库存
+
+添加物品到库存：
+
+```bash
+mcc inventory add redstone 64
+mcc inventory add stone 128
+```
+
+查看当前库存：
 
 ```bash
 mcc inventory list
 ```
 
-3. 使用库存计算材料：
+移除物品：
 
 ```bash
-mcc calc "红石比较器" 1 --inventory
+mcc inventory remove redstone 16
 ```
 
-### 查看配方
-
-查看物品的配方：
+清空库存：
 
 ```bash
-mcc recipe show "红石中继器"
+mcc inventory clear
 ```
 
-查看所有可用物品：
+### 配方查询
+
+列出所有可用物品：
 
 ```bash
 mcc recipe list
 ```
 
-### 模组支持
-
-加载自定义模组配方：
+查看物品配方：
 
 ```bash
-mcc mod load my_mod
+mcc recipe show redstone_repeater
 ```
 
-## 完整命令参考
+### 模组管理
 
-### `calc` - 计算材料
+加载模组配方：
 
 ```bash
-mcc calc <物品名称/ID> <数量> [选项]
+mcc mod load create
 ```
 
-选项：
-- `-i, --inventory FILE` - 指定库存文件路径
-- `-m, --mods MODS` - 指定加载的模组（逗号分隔）
-
-### `inventory` - 库存管理
+查看已加载的模组：
 
 ```bash
-mcc inventory add <物品名称/ID> <数量> [--file FILE]  # 添加物品
-mcc inventory remove <物品名称/ID> <数量> [--file FILE]  # 移除物品
-mcc inventory list [--file FILE]                        # 查看库存
-mcc inventory clear [--file FILE]                       # 清空库存
+mcc mod list
 ```
 
-### `recipe` - 配方管理
+卸载模组配方：
 
 ```bash
-mcc recipe list [--mod MOD]  # 列出所有可用物品
-mcc recipe show <物品>        # 显示物品配方
+mcc mod unload create
 ```
 
-### `mod` - 模组管理
+---
 
-```bash
-mcc mod list              # 列出已加载的模组
-mcc mod load <模组ID>    # 加载模组
-mcc mod unload <模组ID>  # 卸载模组
+## 命令参考
+
+### `mcc calc` - 计算材料
+
+| 参数/选项 | 说明 |
+|---------|------|
+| `name_or_id` | 物品名称或 ID |
+| `count` | 需要制作的数量 |
+| `-i, --inventory` | 使用默认库存文件 |
+| `--inventory-file` | 指定库存文件路径 |
+| `-m, --mods` | 指定加载的模组（逗号分隔）|
+
+### `mcc inventory` - 库存管理
+
+| 子命令 | 说明 |
+|-------|------|
+| `add <物品> <数量>` | 添加物品到库存 |
+| `remove <物品> <数量>` | 从库存移除物品 |
+| `list` | 列出库存中的所有物品 |
+| `clear` | 清空库存 |
+
+### `mcc recipe` - 配方查询
+
+| 子命令 | 说明 |
+|-------|------|
+| `list [--mod <模组>]` | 列出所有可用物品 |
+| `show <物品>` | 显示物品的配方信息 |
+
+### `mcc mod` - 模组管理
+
+| 子命令 | 说明 |
+|-------|------|
+| `list` | 列出已加载的模组 |
+| `load <模组ID>` | 加载模组配方 |
+| `unload <模组ID>` | 卸载模组配方 |
+
+---
+
+## 项目结构
+
 ```
+minecraft_calculator/
+├── core/                      # 核心模块
+│   ├── calculator.py          # 材料计算引擎
+│   ├── inventory.py           # 库存管理
+│   ├── recipe_manager.py      # 配方管理器
+│   └── strategies.py         # 配方选择策略
+├── data/                      # 数据目录
+│   ├── recipes/
+│   │   ├── vanilla.yaml       # 原版配方
+│   │   └── mods/              # 模组配方目录
+│   └── inventory.yaml         # 库存数据
+├── exceptions/                # 自定义异常
+│   └── __init__.py
+├── utils/                     # 工具模块
+│   ├── formatter.py           # 输出格式化
+│   └── yaml_loader.py         # YAML 加载器
+└── cli.py                     # 命令行接口
+```
+
+---
 
 ## 添加自定义配方
 
-在 `data/recipes/` 目录下创建 YAML 文件，格式如下：
+配方以 YAML 格式存储在 `data/recipes/` 目录下。
+
+### 原版配方
+
+编辑 `data/recipes/vanilla.yaml`：
 
 ```yaml
 items:
-  my_item:
-    name: 我的物品
+  custom_item:
+    name: 自定义物品
     stacks: 64
     recipes:
       - ingredients:
-          planks: 4
-          redstone: 2
+          diamond: 1
+          iron_ingot: 3
         result: 1
 ```
 
-对于模组配方，将文件放在 `data/recipes/mods/` 目录下。
+### 模组配方
 
-## 配置
+在 `data/recipes/mods/` 目录下创建新的 YAML 文件，例如 `mymod.yaml`：
 
-默认配置：
-- 库存文件：`data/inventory.yaml`
-- 配方目录：`data/recipes/`
+```yaml
+items:
+  mod_item:
+    name: 模组物品
+    stacks: 64
+    recipes:
+      - ingredients:
+          iron_ingot: 2
+        result: 4
+```
+
+然后使用 `mcc mod load mymod` 加载。
+
+---
+
+## 配方选择策略
+
+计算器支持多种配方选择策略：
+
+| 策略 | 说明 |
+|------|------|
+| **SmartRecipeStrategy** (默认) | 选择产出效率最高的配方 |
+| **FirstRecipeStrategy** | 选择第一个配方 |
+| **MinIngredientStrategy** | 选择材料数量最少的配方 |
+| **MinTotalCountStrategy** | 选择总材料数量最少的配方 |
+
+---
 
 ## 开发
 
-安装开发依赖：
+### 运行测试
 
 ```bash
-pip install -e ".[dev]"
+# 运行所有测试
+uv run pytest
+
+# 运行测试并显示覆盖率
+uv run pytest --cov=minecraft_calculator
 ```
 
-运行测试：
+### 代码检查
 
 ```bash
-pytest
+# 类型检查
+uv run mypy minecraft_calculator
+
+# 代码格式检查
+uv run ruff check minecraft_calculator
 ```
+
+---
+
+## 技术栈
+
+- **click** - 命令行界面框架
+- **PyYAML** - YAML 数据解析
+- **colorama** - 终端彩色输出
+- **pytest** - 单元测试框架
+
+---
 
 ## 许可证
 
-MIT License - 详见 LICENSE 文件
+本项目基于 [MIT 许可证](LICENSE) 开源。
+
+---
 
 ## 贡献
 
 欢迎提交 Issue 和 Pull Request！
-
-## 致谢
-
-感谢 Minecraft 社区的支持！
