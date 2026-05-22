@@ -1,10 +1,9 @@
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
-from minecraft_calculator.core.recipe_manager import RecipeManager
+from minecraft_calculator.core.recipe_manager import RecipeManager, Recipe
 from minecraft_calculator.core.inventory import Inventory
 from minecraft_calculator.core.strategies import (
     RecipeSelectionStrategy,
-    FirstRecipeStrategy,
     SmartRecipeStrategy,
 )
 from minecraft_calculator.exceptions import ItemNotFoundError, InvalidInputError
@@ -27,7 +26,7 @@ class MaterialCalculator:
         self,
         recipe_manager: RecipeManager,
         inventory: Optional[Inventory] = None,
-        strategy: RecipeSelectionStrategy = None,
+        strategy: Optional[RecipeSelectionStrategy] = None,
     ):
         self._recipe_manager = recipe_manager
         self._inventory = inventory
@@ -159,8 +158,8 @@ class MaterialCalculator:
                 children=[],
             ), temp_inventory
 
-        recipe = self._strategy.select(valid_recipes)
-        if recipe is None:
+        selected_recipe: Optional[Recipe] = self._strategy.select(valid_recipes)
+        if selected_recipe is None:
             visited.remove(item_id)
             remaining = {}
             if count > 0:
@@ -175,11 +174,11 @@ class MaterialCalculator:
                 children=[],
             ), temp_inventory
 
-        multiplier = (count + recipe.result - 1) // recipe.result
-        produced = multiplier * recipe.result
+        multiplier = (count + selected_recipe.result - 1) // selected_recipe.result
+        produced = multiplier * selected_recipe.result
 
         ingredients: Dict[str, int] = {}
-        for ing_id, ing_count in recipe.ingredients.items():
+        for ing_id, ing_count in selected_recipe.ingredients.items():
             ingredients[ing_id] = ing_count * multiplier
 
         remaining = {}

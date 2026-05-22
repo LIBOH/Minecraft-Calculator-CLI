@@ -1,0 +1,2102 @@
+{
+    "items": {
+        "adjustable_chain_gearshift": {
+            "name": "可调节链式传动箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "electron_tube": 1,
+                        "encased_chain_drive": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "analog_lever": {
+            "name": "模拟拉杆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "stick": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "andesite_alloy": {
+            "name": "安山合金",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite": 2,
+                        "iron_nugget": 2
+                    },
+                    "result": 1
+                },
+                {
+                    "ingredients": {
+                        "andesite": 2,
+                        "zinc_nugget": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "andesite_casing": {
+            "name": "安山机壳",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "stripped_logs": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "andesite_funnel": {
+            "name": "安山漏斗",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "dried_kelp": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "andesite_tunnel": {
+            "name": "安山隧道",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "dried_kelp": 2
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "any_dyes": {
+            "name": "任意染料",
+            "recipes": [],
+            "stack": 64
+        },
+        "attribute_filter": {
+            "name": "属性过滤器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_nugget": 2,
+                        "wool": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "basin": {
+            "name": "工作盆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 5
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "belt_connector": {
+            "name": "传送带",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "dried_kelp": 6
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "brass_block": {
+            "name": "黄铜块",
+            "recipes": [],
+            "stack": 64
+        },
+        "brass_casing": {
+            "name": "黄铜机壳",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_ingot": 1,
+                        "stripped_logs": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "brass_funnel": {
+            "name": "黄铜漏斗",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_ingot": 1,
+                        "dried_kelp": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "brass_hand": {
+            "name": "黄铜手部零件",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "brass_sheet": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "brass_ingot": {
+            "name": "黄铜锭",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_block": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "brass_nugget": {
+            "name": "黄铜粒",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_ingot": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "brass_sheet": {
+            "name": "黄铜板",
+            "recipes": [],
+            "stack": 64
+        },
+        "brass_tunnel": {
+            "name": "黄铜隧道",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_ingot": 2,
+                        "dried_kelp": 2,
+                        "electron_tube": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "brown_toolbox": {
+            "name": "棕色工具箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chest": 1,
+                        "cogwheel": 1,
+                        "golden_sheet": 2,
+                        "leather": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "cart_assembler": {
+            "name": "矿车装配站",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "logs": 2,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "chain_conveyor": {
+            "name": "锁链传动轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 4,
+                        "large_cogwheel": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "chute": {
+            "name": "溜槽",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 1,
+                        "iron_sheet": 2
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "clipboard": {
+            "name": "剪贴板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "paper": 1,
+                        "planks": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "clockwork_bearing": {
+            "name": "时钟轴承",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "electron_tube": 1,
+                        "wooden_slab": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "clutch": {
+            "name": "离合器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "redstone": 1,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "cogwheel": {
+            "name": "齿轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 1,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "content_observer": {
+            "name": "智能侦测器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "electron_tube": 1,
+                        "observer": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "contraption_controls": {
+            "name": "动态结构控制器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "buttons": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "controller_rail": {
+            "name": "控制铁轨",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "electron_tube": 1,
+                        "gold_ingot": 6,
+                        "stick": 1
+                    },
+                    "result": 6
+                }
+            ],
+            "stack": 64
+        },
+        "controls": {
+            "name": "列车驾驶台",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "lever": 1,
+                        "precision_mechanism": 1,
+                        "railway_casing": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "copper_backtank": {
+            "name": "铜背罐",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "copper_block": 1,
+                        "copper_ingot": 3,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "copper_casing": {
+            "name": "铜机壳",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 1,
+                        "stripped_logs": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "copper_diving_boots": {
+            "name": "铜潜水鞋",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "copper_ingot": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "copper_diving_helmet": {
+            "name": "铜潜水头盔",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 5,
+                        "glass": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "copper_sheet": {
+            "name": "铜板",
+            "recipes": [],
+            "stack": 64
+        },
+        "copper_valve_handle": {
+            "name": "铜阀门手轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "copper_sheet": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "crafter_slot_cover": {
+            "name": "合成槽盖板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_nugget": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "crafting_blueprint": {
+            "name": "合成蓝图",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "crafting_table": 1,
+                        "painting": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "crushing_wheel": {
+            "name": "粉碎轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 16,
+                        "planks": 4,
+                        "stone": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "cuckoo_clock": {
+            "name": "布谷鸟闹钟",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "clock": 1,
+                        "planks": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "deployer": {
+            "name": "机械手",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "brass_hand": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "depot": {
+            "name": "置物台",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "andesite_casing": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "desk_bell": {
+            "name": "呼唤铃",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "golden_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "display_board": {
+            "name": "翻牌显示器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "electron_tube": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "display_link": {
+            "name": "显示链接器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "transmitter": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "electron_tube": {
+            "name": "电子管",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_sheet": 1,
+                        "polished_rose_quartz": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "elevator_pulley": {
+            "name": "升降机滑轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "dried_kelp_block": 1,
+                        "iron_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "empty_blaze_burner": {
+            "name": "空的烈焰人燃烧室",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_sheet": 4,
+                        "netherrack": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "empty_schematic": {
+            "name": "空白蓝图",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "light_blue_dye": 1,
+                        "paper": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "encased_chain_drive": {
+            "name": "链式传动箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "iron_nugget": 3
+                    },
+                    "result": 1
+                },
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "zinc_nugget": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "encased_fan": {
+            "name": "鼓风机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "propeller": 1,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "extendo_grip": {
+            "name": "伸缩机械手",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_hand": 1,
+                        "brass_ingot": 1,
+                        "precision_mechanism": 1,
+                        "stick": 6
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "factory_gauge": {
+            "name": "工厂仪表",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "precision_mechanism": 1,
+                        "stock_link": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "filter": {
+            "name": "列表过滤器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_nugget": 2,
+                        "wool": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "fluid_pipe": {
+            "name": "流体管道",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 1,
+                        "copper_sheet": 2
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "fluid_tank": {
+            "name": "流体储罐",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "barrel": 1,
+                        "copper_sheet": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "fluid_valve": {
+            "name": "流体阀门",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "fluid_pipe": 1,
+                        "iron_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "flywheel": {
+            "name": "飞轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_ingot": 8,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "gantry_carriage": {
+            "name": "起重机取物器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "cogwheel": 1,
+                        "wooden_slab": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "gantry_shaft": {
+            "name": "起重机杆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "redstone": 1
+                    },
+                    "result": 8
+                }
+            ],
+            "stack": 64
+        },
+        "gearbox": {
+            "name": "十字齿轮箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "cogwheel": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "gearshift": {
+            "name": "反转齿轮箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "cogwheel": 1,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "goggles": {
+            "name": "工程师护目镜",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "glass": 2,
+                        "golden_sheet": 1,
+                        "string": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "golden_sheet": {
+            "name": "金板",
+            "recipes": [],
+            "stack": 64
+        },
+        "hand_crank": {
+            "name": "手摇曲柄",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "planks": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "hose_pulley": {
+            "name": "软管滑轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_casing": 1,
+                        "copper_sheet": 1,
+                        "dried_kelp_block": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "iron_sheet": {
+            "name": "铁板",
+            "recipes": [],
+            "stack": 64
+        },
+        "item_drain": {
+            "name": "分液池",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_casing": 1,
+                        "iron_bars": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "item_hatch": {
+            "name": "物品舱口",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "iron_trapdoor": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "item_vault": {
+            "name": "物品保险库",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "barrel": 1,
+                        "iron_sheet": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "large_cogwheel": {
+            "name": "大齿轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 2,
+                        "shaft": 1
+                    },
+                    "result": 1
+                },
+                {
+                    "ingredients": {
+                        "cogwheel": 1,
+                        "planks": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "large_water_wheel": {
+            "name": "大水车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 8,
+                        "water_wheel": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "linear_chassis": {
+            "name": "轴向底盘",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "logs": 3
+                    },
+                    "result": 3
+                }
+            ],
+            "stack": 64
+        },
+        "linked_controller": {
+            "name": "无线红石遥控器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "redstone_link": 1,
+                        "wooden_button": 6
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "mechanical_arm": {
+            "name": "动力臂",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "brass_casing": 1,
+                        "brass_sheet": 3,
+                        "precision_mechanism": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_bearing": {
+            "name": "动力轴承",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "shaft": 1,
+                        "wooden_slab": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_crafter": {
+            "name": "动力合成器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "crafting_table": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 3
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_drill": {
+            "name": "动力钻头",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 3,
+                        "andesite_casing": 1,
+                        "iron_ingot": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_harvester": {
+            "name": "动力收割机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "andesite_casing": 1,
+                        "iron_sheet": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_mixer": {
+            "name": "动力搅拌器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "cogwheel": 1,
+                        "whisk": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_piston": {
+            "name": "动力活塞",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "piston_extension_pole": 1,
+                        "wooden_slab": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_plough": {
+            "name": "动力犁",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 3,
+                        "andesite_casing": 1,
+                        "iron_sheet": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_press": {
+            "name": "动力冲压机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "iron_block": 1,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_pump": {
+            "name": "动力泵",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cogwheel": 1,
+                        "fluid_pipe": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_roller": {
+            "name": "动力压路机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "crushing_wheel": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "mechanical_saw": {
+            "name": "动力锯",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "iron_ingot": 1,
+                        "iron_sheet": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "metal_bracket": {
+            "name": "金属支架",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "iron_ingot": 2,
+                        "iron_nugget": 3
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "millstone": {
+            "name": "石磨",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "cogwheel": 1,
+                        "stone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "minecart_coupling": {
+            "name": "矿车连轴器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "iron_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "nixie_tube": {
+            "name": "辉光管",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "electron": 2
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "nozzle": {
+            "name": "分散网",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 4,
+                        "wools": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "package_filter": {
+            "name": "包裹过滤器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "wool": 1,
+                        "zinc_nugget": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "package_frogport": {
+            "name": "货物蛙港",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "item_vault": 1,
+                        "slime_ball": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "packager": {
+            "name": "打包机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cardboard_block": 1,
+                        "iron_ingot": 4,
+                        "redstone": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "peculiar_bell": {
+            "name": "奇异钟",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_block": 1,
+                        "brass_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "piston_extension_pole": {
+            "name": "活塞杆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "planks": 2
+                    },
+                    "result": 8
+                }
+            ],
+            "stack": 64
+        },
+        "placard": {
+            "name": "置物板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_sheet": 1,
+                        "item_frame": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "portable_fluid_inerface": {
+            "name": "移动式流体接口",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chute": 1,
+                        "copper_casing": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "portable_storage_interface": {
+            "name": "移动式存储接口",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "chute": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "postbox": {
+            "name": "邮箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "any_dyes": 1,
+                        "barrel": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "potato_cannon": {
+            "name": "土豆加农炮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "copper_ingot": 2,
+                        "fluid_pipe": 3,
+                        "precision_mechanism": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "powered_latch": {
+            "name": "锁存器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "lever": 1,
+                        "redstone": 2,
+                        "redstone_torch": 1,
+                        "stone": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "powered_toggle_latch": {
+            "name": "转换锁存器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "lever": 1,
+                        "redstone_torch": 1,
+                        "stone": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "precision_mechanism": {
+            "name": "精密构件",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cogwheel": 5,
+                        "golden_sheet": 1,
+                        "iron_nugget": 5,
+                        "large_cogwheel": 5
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "propeller": {
+            "name": "扇叶",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "iron_sheet": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "pulse_extender": {
+            "name": "脉冲延长器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_sheet": 1,
+                        "redstone": 1,
+                        "redstone_torch": 2,
+                        "stone": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "pulse_repeater": {
+            "name": "脉冲中继器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_sheet": 1,
+                        "redstone": 1,
+                        "redstone_torch": 1,
+                        "stone": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "pulse_timer": {
+            "name": "脉冲计时器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "amethyst_shard": 1,
+                        "brass_sheet": 1,
+                        "redstone_torch": 1,
+                        "stone": 3
+                    },
+                    "result": 3
+                }
+            ],
+            "stack": 64
+        },
+        "radial_chassis": {
+            "name": "径向底盘",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "logs": 3
+                    },
+                    "result": 3
+                }
+            ],
+            "stack": 64
+        },
+        "railway_casing": {
+            "name": "列车机壳",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "sturdy_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "redstone_contact": {
+            "name": "接触式红石信号发生器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cobblestone": 5,
+                        "iron_sheet": 1,
+                        "redstone": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "redstone_link": {
+            "name": "无线红石信号终端",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "transmitter": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "redstone_requester": {
+            "name": "红石请求器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 1,
+                        "redstone": 1,
+                        "stock_link": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "repackager": {
+            "name": "理包机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "packager": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "rope_pulley": {
+            "name": "伸缩滑轮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "iron_sheet": 1,
+                        "wool": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "rose_quartz": {
+            "name": "玫瑰石英",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "quartz": 1,
+                        "redstone": 8
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "rose_quartz_lamp": {
+            "name": "玫瑰石英灯",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "polished_roes_quartz": 1,
+                        "redstone": 1,
+                        "zinc_ingot": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "rotation_speed_controller": {
+            "name": "转速控制器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "precision_mechanism": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "sail_frame": {
+            "name": "风帆框架",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "white_sail": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "sand_paper": {
+            "name": "砂纸",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "paper": 1,
+                        "sand": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "schedule": {
+            "name": "列车时刻表",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "paper": 1,
+                        "sturdy_sheet": 1
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "schematic_and_quill": {
+            "name": "蓝图与笔",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "empty_schematic": 1,
+                        "feather": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "schematic_table": {
+            "name": "蓝图桌",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "smooth_stone": 2,
+                        "wooden_slabs": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "schematicannon": {
+            "name": "蓝图加农炮",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "dispenser": 1,
+                        "iron_block": 2,
+                        "logs": 2,
+                        "smooth_stone": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "secondary_linear_chassis": {
+            "name": "轴向底盘二号",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "linear_chassis": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "sequenced_gearshift": {
+            "name": "可编程齿轮箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "cogwheel": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "shaft": {
+            "name": "传动杆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2
+                    },
+                    "result": 8
+                },
+                {
+                    "ingredients": {
+                        "lazy_shaft": 4
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "smart_chute": {
+            "name": "智能溜槽",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chute": 1,
+                        "electron_tube": 1,
+                        "golden_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "smart_fluid_pipe": {
+            "name": "智能流体管道",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_sheet": 1,
+                        "electron_tube": 1,
+                        "fluid_pipe": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "speedometer": {
+            "name": "转速表",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_casing": 1,
+                        "compass": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "spout": {
+            "name": "注液器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_casing": 1,
+                        "dried_kelp": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "steam_engine": {
+            "name": "蒸汽引擎",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "copper_block": 1,
+                        "golden_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "steam_whistle": {
+            "name": "蒸汽笛",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 1,
+                        "golden_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "sticker": {
+            "name": "黏着器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "cobblestone": 2,
+                        "redstone": 1,
+                        "slime_ball": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "sticky_mechanical_piston": {
+            "name": "黏性动力活塞",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "mechanical_piston": 1,
+                        "slime_ball": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stock_link": {
+            "name": "仓储链接站",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "item_vault": 1,
+                        "transmitter": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stock_ticker": {
+            "name": "仓储发报机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "glass": 1,
+                        "gold_ingot": 1,
+                        "stock_link": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stockpile_switch": {
+            "name": "存量转信器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_casing": 1,
+                        "comparator": 1,
+                        "electron_tube": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stressometer": {
+            "name": "应力表",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "speedometer": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "super_glue": {
+            "name": "强力胶",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_nugget": 1,
+                        "iron_sheet": 1,
+                        "slime_ball": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "table_cloth": {
+            "name": "桌布",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "wool": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "track": {
+            "name": "列车轨道",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_nugget": 2,
+                        "stone_slab": 1
+                    },
+                    "result": 1
+                },
+                {
+                    "ingredients": {
+                        "stone_slab": 1,
+                        "zinc_nugget": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "track_observer": {
+            "name": "列车侦测器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "railway_casing": 1,
+                        "wooden_pressure_plates": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "track_signal": {
+            "name": "列车信号机",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "electron_tube": 1,
+                        "railway_casing": 1
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "track_station": {
+            "name": "列车站点",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "compass": 1,
+                        "railway_casing": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "transmitter": {
+            "name": "发信线圈",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_sheet": 3,
+                        "lightning_rod": 1,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "turntable": {
+            "name": "转盘",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "shaft": 1,
+                        "wooden_slab": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "wand_od_symmetry": {
+            "name": "对称之杖",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "brass_ingot": 1,
+                        "ender_pearl": 1,
+                        "glass": 3,
+                        "obsidian": 1,
+                        "precision_mechanism": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "water_wheel": {
+            "name": "水车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 8,
+                        "shaft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "weighted_ejector": {
+            "name": "弹射置物台",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cogwheel": 1,
+                        "depot": 1,
+                        "golden_sheet": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "whisk": {
+            "name": "搅拌器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 2,
+                        "iron_sheet": 5
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "white_sail": {
+            "name": "风帆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "stick": 2,
+                        "wool": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "windmill_bearing": {
+            "name": "风车轴承",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "shaft": 1,
+                        "stone": 1,
+                        "wooden_slab": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "wooden_bracket": {
+            "name": "木质支架",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "andesite_alloy": 1,
+                        "planks": 2,
+                        "stick": 3
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "wrench": {
+            "name": "扳手",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cogwheel": 1,
+                        "golden_sheet": 3,
+                        "stick": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 1
+        },
+        "zinc_block": {
+            "name": "锌块",
+            "recipes": [],
+            "stack": 64
+        },
+        "zinc_ingot": {
+            "name": "锌锭",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "zinc_block": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "zinc_nugget": {
+            "name": "锌粒",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "zinc_ingot": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        }
+    }
+}

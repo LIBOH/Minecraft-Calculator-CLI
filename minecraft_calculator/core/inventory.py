@@ -1,41 +1,31 @@
-import os
 from typing import Dict, Optional
-from datetime import datetime
-from minecraft_calculator.utils.yaml_loader import YamlLoader
-from minecraft_calculator.exceptions import InvalidInputError, ItemNotFoundError
+from minecraft_calculator.core.data_manager import DataManager
 from minecraft_calculator.core.recipe_manager import RecipeManager
+from minecraft_calculator.exceptions import InvalidInputError, ItemNotFoundError
 
 
 class Inventory:
-    def __init__(self, file_path: str = None):
-        if file_path is None:
-            self._file_path = os.path.join(
-                os.path.dirname(os.path.dirname(__file__)), 'data', 'inventory.yaml'
-            )
+    def __init__(
+        self,
+        file_path: Optional[str] = None,
+        data_manager: Optional[DataManager] = None,
+    ):
+        if data_manager is None:
+            self._data_manager = DataManager()
         else:
-            self._file_path = file_path
-
-        self._items: Dict[str, int] = {}
+            self._data_manager = data_manager
         self._recipe_manager: Optional[RecipeManager] = None
-        self.load()
 
     def set_recipe_manager(self, recipe_manager: RecipeManager) -> None:
-        """设置RecipeManager用于物品ID和名称的转换"""
         self._recipe_manager = recipe_manager
 
     def load(self) -> None:
-        try:
-            data = YamlLoader.load(self._file_path)
-            self._items = data.get("items", {})
-        except Exception:
-            self._items = {}
+        pass
 
     def save(self) -> None:
-        data = {"items": self._items, "last_updated": datetime.now().isoformat()}
-        YamlLoader.save(self._file_path, data)
+        pass
 
     def _resolve_item_id(self, name_or_id: str) -> str:
-        """将物品名或物品ID解析为物品ID"""
         if self._recipe_manager is None:
             return name_or_id
         try:
@@ -44,7 +34,6 @@ class Inventory:
             return name_or_id
 
     def _resolve_item_name(self, name_or_id: str) -> str:
-        """将物品名或物品ID解析为物品名称"""
         if self._recipe_manager is None:
             return name_or_id
         try:
@@ -60,12 +49,7 @@ class Inventory:
             raise InvalidInputError("数量必须为正整数")
 
         item_id = self._resolve_item_id(name_or_id)
-
-        if item_id in self._items:
-            self._items[item_id] += count
-        else:
-            self._items[item_id] = count
-        self.save()
+        self._data_manager.add_item(item_id, count)
 
     def remove_item(self, name_or_id: str, count: int) -> bool:
         if not name_or_id:
@@ -74,52 +58,38 @@ class Inventory:
             raise InvalidInputError("数量必须为正整数")
 
         item_id = self._resolve_item_id(name_or_id)
-
-        if item_id not in self._items:
-            return False
-
-        if self._items[item_id] >= count:
-            self._items[item_id] -= count
-        else:
-            self._items[item_id] = 0
-
-        if self._items[item_id] == 0:
-            del self._items[item_id]
-
-        self.save()
-        return True
+        return self._data_manager.remove_item(item_id, count)
 
     def get_count(self, name_or_id: str) -> int:
-        """通过物品名或物品ID获取物品数量"""
         item_id = self._resolve_item_id(name_or_id)
-        return self._items.get(item_id, 0)
+        return self._data_manager.get_inventory_item(item_id)
 
     def get_count_by_id(self, item_id: str) -> int:
-        """直接通过物品ID获取物品数量（用于计算器）"""
-        if item_id in self._items:
-            return self._items[item_id]
+        count = self._data_manager.get_inventory_item(item_id)
+        if count > 0:
+            return count
 
         if self._recipe_manager is not None:
             try:
                 item_name = self._recipe_manager.get_item_name(item_id)
-                if item_name in self._items:
-                    return self._items[item_name]
+                name_count = self._data_manager.get_inventory_item(item_name)
+                if name_count > 0:
+                    return name_count
             except Exception:
                 pass
 
         return 0
 
     def clear(self) -> None:
-        self._items.clear()
-        self.save()
+        self._data_manager.clear_inventory()
 
     def list_items(self) -> Dict[str, int]:
-        """返回库存中的物品，键可以是物品ID或物品名（如果有RecipeManager）"""
         if self._recipe_manager is None:
-            return dict(self._items)
+            return self._data_manager.list_inventory()
 
         result: Dict[str, int] = {}
-        for item_id, count in self._items.items():
+        inventory = self._data_manager.list_inventory()
+        for item_id, count in inventory.items():
             try:
                 item_name = self._recipe_manager.get_item_name(item_id)
                 result[item_name] = count

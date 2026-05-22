@@ -53,14 +53,15 @@ class SmartRecipeStrategy(RecipeSelectionStrategy):
             return None
         
         # Prefer recipes that produce more output per unit ingredient (more efficient)
-        best_efficiency = -1
+        best_efficiency: float = -1.0
         best_recipe = None
         
         for recipe in recipes:
             # Efficiency is (result count) / (total ingredients)
             total_ingredients = sum(recipe.ingredients.values())
+            efficiency: float
             if total_ingredients == 0:
-                efficiency = 0
+                efficiency = 0.0
             else:
                 efficiency = recipe.result / total_ingredients
             

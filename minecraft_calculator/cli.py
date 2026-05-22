@@ -1,6 +1,7 @@
 import click
 import sys
 from colorama import init, Fore, Style
+from minecraft_calculator.core.data_manager import DataManager
 from minecraft_calculator.core.recipe_manager import RecipeManager
 from minecraft_calculator.core.inventory import Inventory
 from minecraft_calculator.core.calculator import MaterialCalculator
@@ -39,8 +40,10 @@ def cli():
 @click.option("--mods", "-m", default="", help="指定加载的模组（逗号分隔）")
 def calc(name_or_id, count, use_inventory, inventory_file, mods):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
 
         if mods:
             for mod_id in mods.split(","):
@@ -51,7 +54,7 @@ def calc(name_or_id, count, use_inventory, inventory_file, mods):
         inventory_instance = None
         if use_inventory is not None or inventory_file is not None:
             inv_path = inventory_file if inventory_file else None
-            inventory_instance = Inventory(inv_path)
+            inventory_instance = Inventory(inv_path, data_manager)
             inventory_instance.set_recipe_manager(recipe_manager)
 
         calculator = MaterialCalculator(recipe_manager, inventory_instance)
@@ -80,10 +83,12 @@ def inventory():
 @click.option("--file", "-f", default=None, help="指定库存文件路径")
 def inventory_add(name_or_id, count, file):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
 
-        inv = Inventory(file)
+        inv = Inventory(file, data_manager)
         inv.set_recipe_manager(recipe_manager)
         inv.add_item(name_or_id, count)
 
@@ -101,10 +106,12 @@ def inventory_add(name_or_id, count, file):
 @click.option("--file", "-f", default=None, help="指定库存文件路径")
 def inventory_remove(name_or_id, count, file):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
 
-        inv = Inventory(file)
+        inv = Inventory(file, data_manager)
         inv.set_recipe_manager(recipe_manager)
         success = inv.remove_item(name_or_id, count)
 
@@ -128,9 +135,11 @@ def inventory_remove(name_or_id, count, file):
 @click.option("--file", "-f", default=None, help="指定库存文件路径")
 def inventory_list(file):
     try:
-        inv = Inventory(file)
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        inv = Inventory(file, data_manager)
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
         inv.set_recipe_manager(recipe_manager)
         items = inv.list_items()
         output = OutputFormatter.format_inventory(items, recipe_manager)
@@ -143,7 +152,8 @@ def inventory_list(file):
 @click.option("--file", "-f", default=None, help="指定库存文件路径")
 def inventory_clear(file):
     try:
-        inv = Inventory(file)
+        data_manager = DataManager()
+        inv = Inventory(file, data_manager)
         inv.clear()
         click.echo(f"{Fore.GREEN}库存已清空{Style.RESET_ALL}")
     except Exception as e:
@@ -159,8 +169,10 @@ def recipe():
 @click.option("--mod", "-m", default=None, help="指定模组ID")
 def recipe_list(mod):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
 
         if mod:
             recipe_manager.load_mod_recipes(mod)
@@ -183,7 +195,8 @@ def recipe_list(mod):
 @click.argument("name_or_id")
 def recipe_show(name_or_id):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
 
         item_id = recipe_manager.get_item_id(name_or_id)
@@ -218,8 +231,10 @@ def mod():
 @mod.command("list")
 def mod_list():
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
         mods = recipe_manager.list_loaded_mods()
         if mods:
             click.echo(f"{Fore.CYAN}已加载的模组:{Style.RESET_ALL}")
@@ -235,10 +250,11 @@ def mod_list():
 @click.argument("mod_id")
 def mod_load(mod_id):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
 
-        success = recipe_manager.load_mod_recipes(mod_id)
+        success = recipe_manager.enable_mod(mod_id)
         if success:
             click.echo(f"{Fore.GREEN}模组 '{mod_id}' 加载成功{Style.RESET_ALL}")
         else:
@@ -253,9 +269,11 @@ def mod_load(mod_id):
 @click.argument("mod_id")
 def mod_unload(mod_id):
     try:
-        recipe_manager = RecipeManager()
+        data_manager = DataManager()
+        recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
-        recipe_manager.unload_mod_recipes(mod_id)
+        recipe_manager.load_enabled_mods()
+        recipe_manager.disable_mod(mod_id)
         click.echo(f"{Fore.GREEN}模组 '{mod_id}' 已卸载{Style.RESET_ALL}")
     except Exception as e:
         click.echo(f"{Fore.RED}错误: {e}{Style.RESET_ALL}", err=True)

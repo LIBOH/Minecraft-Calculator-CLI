@@ -1,13 +1,14 @@
-import os
 from dataclasses import dataclass
-from typing import Dict, List
-from minecraft_calculator.utils.yaml_loader import YamlLoader
-from minecraft_calculator.exceptions import RecipeLoadError, ItemNotFoundError
+from typing import Dict, List, Optional
+from minecraft_calculator.core.data_manager import DataManager
+from minecraft_calculator.exceptions import ItemNotFoundError
+
 
 @dataclass
 class Recipe:
     ingredients: Dict[str, int]
     result: int = 1
+
 
 @dataclass
 class ItemRecipe:
@@ -17,116 +18,109 @@ class ItemRecipe:
     stack_size: int = 64
     source_mod: str = "vanilla"
 
+
 class RecipeManager:
-    def __init__(self):
-        self._recipes: Dict[str, ItemRecipe] = {}
+    def __init__(self, data_manager: Optional[DataManager] = None):
+        if data_manager is None:
+            self._data_manager = DataManager()
+        else:
+            self._data_manager = data_manager
         self._name_to_id: Dict[str, str] = {}
         self._loaded_mods: set[str] = set()
         self._vanilla_loaded: bool = False
-        self._data_path: str = os.path.join(
-            os.path.dirname(os.path.dirname(__file__)), 'data', 'recipes'
-        )
+        self._load_recipes_from_data_manager()
+
+    def _load_recipes_from_data_manager(self):
+        for item_id in self._data_manager.get_all_recipes():
+            item_data = self._data_manager.get_recipe(item_id)
+            if item_data:
+                self._name_to_id[item_data.get("name", item_id)] = item_id
 
     def load_vanilla_recipes(self) -> None:
         if self._vanilla_loaded:
             return
-        
-        file_path = os.path.join(self._data_path, 'vanilla.yaml')
-        
-        try:
-            data = YamlLoader.load(file_path)
-            if 'items' in data:
-                for item_id, item_data in data['items'].items():
-                    recipes = []
-                    for recipe_data in item_data.get('recipes', []):
-                        ingredients = recipe_data.get('ingredients', {})
-                        result = recipe_data.get('result', 1)
-                        recipes.append(Recipe(ingredients=ingredients, result=result))
-                    
-                    item_name = item_data.get('name', item_id)
-                    self._recipes[item_id] = ItemRecipe(
-                        item_id=item_id,
-                        name=item_name,
-                        recipes=recipes,
-                        stack_size=item_data.get('stack', 64),
-                        source_mod="vanilla"
-                    )
-                    self._name_to_id[item_name] = item_id
-            self._vanilla_loaded = True
-        except Exception as e:
-            raise RecipeLoadError(file_path, str(e))
+        self._vanilla_loaded = True
+        self._load_recipes_from_data_manager()
 
     def load_mod_recipes(self, mod_id: str) -> bool:
         if mod_id in self._loaded_mods:
             return True
-        
-        file_path = os.path.join(self._data_path, 'mods', f'{mod_id}.yaml')
-        
-        if not os.path.exists(file_path):
-            return False
-        
-        try:
-            data = YamlLoader.load(file_path)
-            if 'items' in data:
-                for item_id, item_data in data['items'].items():
-                    recipes = []
-                    for recipe_data in item_data.get('recipes', []):
-                        ingredients = recipe_data.get('ingredients', {})
-                        result = recipe_data.get('result', 1)
-                        recipes.append(Recipe(ingredients=ingredients, result=result))
-                    
-                    item_name = item_data.get('name', item_id)
-                    self._recipes[item_id] = ItemRecipe(
-                        item_id=item_id,
-                        name=item_name,
-                        recipes=recipes,
-                        stack_size=item_data.get('stack', 64),
-                        source_mod=mod_id
-                    )
-                    self._name_to_id[item_name] = item_id
-            self._loaded_mods.add(mod_id)
-            return True
-        except Exception as e:
-            raise RecipeLoadError(file_path, str(e))
+        self._loaded_mods.add(mod_id)
+        self._data_manager.enable_mod(mod_id)
+        self._load_recipes_from_data_manager()
+        return True
 
     def unload_mod_recipes(self, mod_id: str) -> None:
         if mod_id not in self._loaded_mods:
             return
-        
         self._loaded_mods.remove(mod_id)
-        
-        self._recipes.clear()
+        self._data_manager.disable_mod(mod_id)
         self._name_to_id.clear()
-        self._vanilla_loaded = False
-        self.load_vanilla_recipes()
-        
-        for mod in self._loaded_mods:
-            self.load_mod_recipes(mod)
+        self._load_recipes_from_data_manager()
 
     def get_recipes(self, item_id: str) -> List[Recipe]:
-        item_recipe = self._recipes.get(item_id)
-        return item_recipe.recipes if item_recipe else []
+        item_data = self._data_manager.get_recipe(item_id)
+        if item_data:
+            recipes_data = item_data.get("recipes", [])
+            return [
+                Recipe(
+                    ingredients=recipe.get("ingredients", {}),
+                    result=recipe.get("result", 1),
+                )
+                for recipe in recipes_data
+            ]
+        return []
 
     def get_item_name(self, item_id: str) -> str:
-        item_recipe = self._recipes.get(item_id)
-        return item_recipe.name if item_recipe else item_id
+        item_data = self._data_manager.get_recipe(item_id)
+        if item_data:
+            return item_data.get("name", item_id)
+        return item_id
 
     def get_item_id(self, name_or_id: str) -> str:
-        if name_or_id in self._recipes:
+        item_data = self._data_manager.get_recipe(name_or_id)
+        if item_data:
             return name_or_id
         if name_or_id in self._name_to_id:
             return self._name_to_id[name_or_id]
         raise ItemNotFoundError(name_or_id)
 
     def get_item_stack_size(self, item_id: str) -> int:
-        item_recipe = self._recipes.get(item_id)
-        return item_recipe.stack_size if item_recipe else 64
+        item_data = self._data_manager.get_recipe(item_id)
+        if item_data:
+            return item_data.get("stack", 64)
+        return 64
 
     def is_loaded(self, mod_id: str) -> bool:
         return mod_id in self._loaded_mods
 
     def list_loaded_mods(self) -> List[str]:
-        return list(self._loaded_mods)
+        return self._data_manager.get_enabled_mods()
 
     def get_all_items(self) -> List[str]:
-        return list(self._recipes.keys())
+        return self._data_manager.get_all_recipes()
+
+    def load_enabled_mods(self) -> None:
+        """加载已启用的模组（与之前的接口兼容）"""
+        for mod_id in self._data_manager.get_enabled_mods():
+            self._loaded_mods.add(mod_id)
+
+    def enable_mod(self, mod_id: str) -> bool:
+        """启用模组（与之前的接口兼容）"""
+        # 检查模组文件是否存在
+        mod_path = self._data_manager._config_manager.get_mod_recipes_path(mod_id)
+        import os
+
+        if not os.path.exists(mod_path):
+            return False
+        self._data_manager.enable_mod(mod_id)
+        self._loaded_mods.add(mod_id)
+        self._load_recipes_from_data_manager()
+        return True
+
+    def disable_mod(self, mod_id: str) -> None:
+        """禁用模组（与之前的接口兼容）"""
+        self._data_manager.disable_mod(mod_id)
+        if mod_id in self._loaded_mods:
+            self._loaded_mods.remove(mod_id)
+        self._load_recipes_from_data_manager()
