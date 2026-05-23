@@ -21,6 +21,8 @@ class PathsConfig:
 class BackupConfig:
     max_backups: int
     enabled: bool
+    recipes_backup_dir: Optional[str] = None
+    inventory_backup_dir: Optional[str] = None
 
 
 @dataclass
@@ -77,7 +79,12 @@ class ConfigManager:
             mods_recipes_dir="mods",
             app_config_file="app_config.json",
         )
-        backup = BackupConfig(max_backups=3, enabled=True)
+        backup = BackupConfig(
+            max_backups=3,
+            enabled=True,
+            recipes_backup_dir=None,
+            inventory_backup_dir=None
+        )
         io = IOConfig(max_file_size=10485760, compact_json=True)
         json_loader = JsonLoaderConfig(
             prefer_orjson=True, fallback_to_ujson=True, fallback_to_stdjson=True
@@ -99,6 +106,8 @@ class ConfigManager:
         backup = BackupConfig(
             max_backups=backup_data.get("max_backups", 3),
             enabled=backup_data.get("enabled", True),
+            recipes_backup_dir=backup_data.get("recipes_backup_dir", None),
+            inventory_backup_dir=backup_data.get("inventory_backup_dir", None),
         )
         io_data = data.get("io", {})
         io = IOConfig(
@@ -128,6 +137,8 @@ class ConfigManager:
             "backup": {
                 "max_backups": self._config.backup.max_backups,
                 "enabled": self._config.backup.enabled,
+                "recipes_backup_dir": self._config.backup.recipes_backup_dir,
+                "inventory_backup_dir": self._config.backup.inventory_backup_dir,
             },
             "io": {
                 "max_file_size": self._config.io.max_file_size,

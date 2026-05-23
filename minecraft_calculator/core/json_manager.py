@@ -44,7 +44,9 @@ class JsonManager:
             self._pending_changes.append({"type": "recipe_add", "data": event.data})
         else:
             self._save_recipe(
-                event.data.get("recipe", {}), event.data.get("mod_id", "vanilla")
+                event.data.get("recipe", {}),
+                event.data.get("mod_id", "vanilla"),
+                event.data.get("item_id"),
             )
 
     def _on_recipe_updated(self, event: Event):
@@ -52,7 +54,9 @@ class JsonManager:
             self._pending_changes.append({"type": "recipe_update", "data": event.data})
         else:
             self._save_recipe(
-                event.data.get("recipe", {}), event.data.get("mod_id", "vanilla")
+                event.data.get("recipe", {}),
+                event.data.get("mod_id", "vanilla"),
+                event.data.get("item_id"),
             )
 
     def _on_recipe_removed(self, event: Event):
@@ -103,7 +107,11 @@ class JsonManager:
         if change_type == "inventory":
             self._save_inventory(data.get("inventory", {}))
         elif change_type == "recipe_add" or change_type == "recipe_update":
-            self._save_recipe(data.get("recipe", {}), data.get("mod_id", "vanilla"))
+            self._save_recipe(
+                data.get("recipe", {}),
+                data.get("mod_id", "vanilla"),
+                data.get("item_id"),
+            )
         elif change_type == "recipe_remove":
             self._remove_recipe(data.get("item_id", ""), data.get("mod_id", "vanilla"))
 
@@ -184,11 +192,15 @@ class JsonManager:
             fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
             backup_enabled=self._config_manager.config.backup.enabled,
             max_backups=self._config_manager.config.backup.max_backups,
+            backup_dir=self._config_manager.config.backup.inventory_backup_dir,
         )
 
-    def _save_recipe(self, recipe: Dict[str, Any], mod_id: str):
+    def _save_recipe(
+        self, recipe: Dict[str, Any], mod_id: str, item_id: Optional[str] = None
+    ):
         recipe_copy = copy.deepcopy(recipe)
-        item_id = recipe_copy.get("item_id")
+        if item_id is None:
+            item_id = recipe_copy.get("item_id")
         if not item_id:
             return
         recipe_copy.pop("_source_mod", None)
@@ -222,6 +234,7 @@ class JsonManager:
             fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
             backup_enabled=self._config_manager.config.backup.enabled,
             max_backups=self._config_manager.config.backup.max_backups,
+            backup_dir=self._config_manager.config.backup.recipes_backup_dir,
         )
 
     def _remove_recipe(self, item_id: str, mod_id: str):
@@ -255,6 +268,7 @@ class JsonManager:
                 fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
                 backup_enabled=self._config_manager.config.backup.enabled,
                 max_backups=self._config_manager.config.backup.max_backups,
+                backup_dir=self._config_manager.config.backup.recipes_backup_dir,
             )
 
     def _save_all_recipes(self, recipes: Dict[str, Dict[str, Any]]):
@@ -283,6 +297,7 @@ class JsonManager:
                 fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
                 backup_enabled=self._config_manager.config.backup.enabled,
                 max_backups=self._config_manager.config.backup.max_backups,
+                backup_dir=self._config_manager.config.backup.recipes_backup_dir,
             )
 
         for mod_id, mod_data in mod_recipes.items():
@@ -297,4 +312,5 @@ class JsonManager:
                 fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
                 backup_enabled=self._config_manager.config.backup.enabled,
                 max_backups=self._config_manager.config.backup.max_backups,
+                backup_dir=self._config_manager.config.backup.recipes_backup_dir,
             )

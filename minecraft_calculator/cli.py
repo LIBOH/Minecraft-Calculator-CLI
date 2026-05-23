@@ -198,6 +198,7 @@ def recipe_show(name_or_id):
         data_manager = DataManager()
         recipe_manager = RecipeManager(data_manager)
         recipe_manager.load_vanilla_recipes()
+        recipe_manager.load_enabled_mods()
 
         item_id = recipe_manager.get_item_id(name_or_id)
         recipes = recipe_manager.get_recipes(item_id)
@@ -221,6 +222,100 @@ def recipe_show(name_or_id):
         click.echo(f"{Fore.RED}错误: 物品 '{e}' 未找到{Style.RESET_ALL}", err=True)
     except RecipeLoadError as e:
         click.echo(f"{Fore.RED}错误: {e}{Style.RESET_ALL}", err=True)
+
+
+@recipe.command("add")
+@click.argument("item_id")
+@click.argument("name")
+@click.argument("ingredients", nargs=-1)
+@click.option("--result", "-r", type=int, default=1, help="产出数量")
+@click.option("--stack", "-s", type=int, default=64, help="堆叠大小")
+@click.option("--mod", "-m", default="vanilla", help="模组ID")
+def recipe_add(item_id, name, ingredients, result, stack, mod):
+    try:
+        data_manager = DataManager()
+        ingredient_dict = {}
+        for ing in ingredients:
+            parts = ing.split(":")
+            if len(parts) == 2:
+                ing_id, ing_count = parts
+                try:
+                    ingredient_dict[ing_id] = int(ing_count)
+                except ValueError:
+                    click.echo(f"{Fore.RED}错误: 无效的数量 '{ing_count}'{Style.RESET_ALL}", err=True)
+                    return
+            else:
+                click.echo(f"{Fore.RED}错误: 配料格式应为 'item_id:count'{Style.RESET_ALL}", err=True)
+                return
+
+        data_manager.add_recipe(item_id, name, ingredient_dict, result, stack, mod)
+        click.echo(f"{Fore.GREEN}成功添加配方: {name} ({item_id}){Style.RESET_ALL}")
+    except InvalidInputError as e:
+        click.echo(f"{Fore.RED}错误: {e}{Style.RESET_ALL}", err=True)
+    except Exception as e:
+        click.echo(f"{Fore.RED}未知错误: {e}{Style.RESET_ALL}", err=True)
+
+
+@recipe.command("update")
+@click.argument("item_id")
+@click.option("--name", "-n", help="物品名称")
+@click.option("--ingredients", "-i", multiple=True, help="配料 (格式: item_id:count)")
+@click.option("--result", "-r", type=int, help="产出数量")
+@click.option("--stack", "-s", type=int, help="堆叠大小")
+def recipe_update(item_id, name, ingredients, result, stack):
+    try:
+        data_manager = DataManager()
+        ingredient_dict = None
+        if ingredients:
+            ingredient_dict = {}
+            for ing in ingredients:
+                parts = ing.split(":")
+                if len(parts) == 2:
+                    ing_id, ing_count = parts
+                    try:
+                        ingredient_dict[ing_id] = int(ing_count)
+                    except ValueError:
+                        click.echo(f"{Fore.RED}错误: 无效的数量 '{ing_count}'{Style.RESET_ALL}", err=True)
+                        return
+                else:
+                    click.echo(f"{Fore.RED}错误: 配料格式应为 'item_id:count'{Style.RESET_ALL}", err=True)
+                    return
+
+        success = data_manager.update_recipe(item_id, name, ingredient_dict, result, stack)
+        if success:
+            click.echo(f"{Fore.GREEN}成功更新配方: {item_id}{Style.RESET_ALL}")
+        else:
+            click.echo(f"{Fore.YELLOW}未找到物品: {item_id}{Style.RESET_ALL}", err=True)
+    except Exception as e:
+        click.echo(f"{Fore.RED}未知错误: {e}{Style.RESET_ALL}", err=True)
+
+
+@recipe.command("remove")
+@click.argument("item_id")
+def recipe_remove(item_id):
+    try:
+        data_manager = DataManager()
+        success = data_manager.remove_recipe(item_id)
+        if success:
+            click.echo(f"{Fore.GREEN}成功删除配方: {item_id}{Style.RESET_ALL}")
+        else:
+            click.echo(f"{Fore.YELLOW}未找到物品: {item_id}{Style.RESET_ALL}", err=True)
+    except Exception as e:
+        click.echo(f"{Fore.RED}未知错误: {e}{Style.RESET_ALL}", err=True)
+
+
+@recipe.command("import")
+@click.argument("file_path")
+@click.option("--mod", "-m", default="vanilla", help="模组ID")
+def recipe_import(file_path, mod):
+    try:
+        data_manager = DataManager()
+        count = data_manager.import_recipes_from_file(file_path, mod)
+        click.echo(f"{Fore.GREEN}成功导入 {count} 个配方{Style.RESET_ALL}")
+    except InvalidInputError as e:
+        click.echo(f"{Fore.RED}错误: {e}{Style.RESET_ALL}", err=True)
+    except Exception as e:
+        click.echo(f"{Fore.RED}未知错误: {e}{Style.RESET_ALL}", err=True)
 
 
 @cli.group()

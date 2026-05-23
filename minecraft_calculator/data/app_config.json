@@ -1,1 +1,28 @@
-{"backup":{"enabled":true,"max_backups":3},"enabled_mods":["create"],"io":{"compact_json":true,"max_file_size":10485760},"json_loader":{"fallback_to_stdjson":true,"fallback_to_ujson":true,"prefer_orjson":true},"paths":{"app_config_file":"app_config.json","data_dir":"data","inventory_file":"inventory.json","mods_recipes_dir":"mods","recipes_dir":"recipes","vanilla_recipes_file":"vanilla.json"}}
+{
+    "backup": {
+        "enabled": true,
+        "inventory_backup_dir": "backups/inventory_backups",
+        "max_backups": 3,
+        "recipes_backup_dir": "backups/recipes_backups"
+    },
+    "enabled_mods": [
+        "create"
+    ],
+    "io": {
+        "compact_json": true,
+        "max_file_size": 10485760
+    },
+    "json_loader": {
+        "fallback_to_stdjson": true,
+        "fallback_to_ujson": true,
+        "prefer_orjson": true
+    },
+    "paths": {
+        "app_config_file": "app_config.json",
+        "data_dir": "data",
+        "inventory_file": "inventory.json",
+        "mods_recipes_dir": "mods",
+        "recipes_dir": "recipes",
+        "vanilla_recipes_file": "vanilla.json"
+    }
+}

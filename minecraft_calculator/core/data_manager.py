@@ -93,7 +93,6 @@ class DataManager:
             raise InvalidInputError("物品名称不能为空")
 
         item_data = {
-            "item_id": item_id,
             "name": name,
             "stack": stack_size,
             "recipes": [{"ingredients": ingredients, "result": result}],
@@ -104,7 +103,9 @@ class DataManager:
         self._search_index.build(self._recipes)
 
         self._event_bus.publish_simple(
-            EventType.RECIPE_ADDED, {"recipe": item_data, "mod_id": mod_id}, self
+            EventType.RECIPE_ADDED,
+            {"recipe": item_data, "mod_id": mod_id, "item_id": item_id},
+            self,
         )
         return True
 
@@ -135,7 +136,7 @@ class DataManager:
         mod_id = self._recipes[item_id].get("_source_mod", "vanilla")
         self._event_bus.publish_simple(
             EventType.RECIPE_UPDATED,
-            {"recipe": self._recipes[item_id], "mod_id": mod_id},
+            {"recipe": self._recipes[item_id], "mod_id": mod_id, "item_id": item_id},
             self,
         )
         return True
@@ -268,3 +269,62 @@ class DataManager:
 
     def get_recipe_count(self) -> int:
         return len(self._recipes)
+
+    def add_recipes_from_dict(
+        self,
+        recipes_dict: Dict[str, Any],
+        mod_id: str = "vanilla",
+    ) -> int:
+        """从字典批量添加配方"""
+        added_count = 0
+        if "items" not in recipes_dict:
+            return 0
+
+        with self.transaction():
+            for item_id, item_data in recipes_dict["items"].items():
+                if not item_id:
+                    continue
+                name = item_data.get("name", item_id)
+                stack = item_data.get("stack", 64)
+                recipes = item_data.get("recipes", [])
+
+                # 直接添加完整的物品数据
+                self._recipes[item_id] = {
+                    "name": name,
+                    "stack": stack,
+                    "recipes": recipes,
+                    "_source_mod": mod_id,
+                }
+                self._event_bus.publish_simple(
+                    EventType.RECIPE_ADDED,
+                    {
+                        "recipe": self._recipes[item_id],
+                        "mod_id": mod_id,
+                        "item_id": item_id,
+                    },
+                    self,
+                )
+                added_count += 1
+
+        self._search_index.build(self._recipes)
+        return added_count
+
+    def import_recipes_from_file(
+        self,
+        file_path: str,
+        mod_id: str = "vanilla",
+    ) -> int:
+        """从文件批量导入配方"""
+        from minecraft_calculator.utils.json_loader import JsonLoader
+
+        try:
+            recipes_dict = JsonLoader.load(
+                file_path,
+                max_file_size=self._config_manager.config.io.max_file_size,
+                prefer_orjson=self._config_manager.config.json_loader.prefer_orjson,
+                fallback_to_ujson=self._config_manager.config.json_loader.fallback_to_ujson,
+                fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
+            )
+            return self.add_recipes_from_dict(recipes_dict, mod_id)
+        except Exception as e:
+            raise InvalidInputError(f"导入配方失败: {str(e)}")

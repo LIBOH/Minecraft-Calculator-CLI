@@ -1,17 +1,19 @@
 import os
 import shutil
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from datetime import datetime
 from minecraft_calculator.exceptions import JsonParseError, JsonSaveError
 
 try:
     import orjson
+
     _HAS_ORJSON = True
 except ImportError:
     _HAS_ORJSON = False
 
 try:
     import ujson
+
     _HAS_UJSON = True
 except ImportError:
     _HAS_UJSON = False
@@ -21,11 +23,24 @@ import json as _std_json
 
 class BackupManager:
     @staticmethod
-    def backup(file_path: str, max_backups: int = 3, enabled: bool = True) -> None:
+    def backup(
+        file_path: str,
+        max_backups: int = 3,
+        enabled: bool = True,
+        backup_dir: Optional[str] = None,
+    ) -> None:
         if not enabled or not os.path.exists(file_path):
             return
 
-        backup_dir = f"{file_path}.backups"
+        if backup_dir:
+            # 如果 backup_dir 是相对路径，我们需要结合 file_path 的目录作为基准
+            if not os.path.isabs(backup_dir):
+                file_dir = os.path.dirname(file_path)
+                backup_dir = os.path.join(file_dir, backup_dir)
+        else:
+            # 默认路径
+            backup_dir = f"{file_path}.backups"
+
         os.makedirs(backup_dir, exist_ok=True)
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -34,8 +49,8 @@ class BackupManager:
         shutil.copy2(file_path, backup_file)
 
         backups = sorted(
-            [f for f in os.listdir(backup_dir) if f.endswith('.json')],
-            key=lambda x: os.path.getmtime(os.path.join(backup_dir, x))
+            [f for f in os.listdir(backup_dir) if f.endswith(".json")],
+            key=lambda x: os.path.getmtime(os.path.join(backup_dir, x)),
         )
 
         while len(backups) > max_backups:
@@ -57,7 +72,7 @@ class JsonLoader:
         max_file_size: int = 10 * 1024 * 1024,
         prefer_orjson: bool = True,
         fallback_to_ujson: bool = True,
-        fallback_to_stdjson: bool = True
+        fallback_to_stdjson: bool = True,
     ) -> Dict[str, Any]:
         file_path = JsonLoader._validate_path(file_path)
 
@@ -93,11 +108,12 @@ class JsonLoader:
         fallback_to_ujson: bool = True,
         fallback_to_stdjson: bool = True,
         backup_enabled: bool = True,
-        max_backups: int = 3
+        max_backups: int = 3,
+        backup_dir: Optional[str] = None,
     ):
         file_path = JsonLoader._validate_path(file_path)
 
-        BackupManager.backup(file_path, max_backups, backup_enabled)
+        BackupManager.backup(file_path, max_backups, backup_enabled, backup_dir)
 
         try:
             directory = os.path.dirname(file_path)
@@ -107,13 +123,14 @@ class JsonLoader:
             if prefer_orjson and _HAS_ORJSON:
                 if compact:
                     content = orjson.dumps(
-                        data,
-                        option=orjson.OPT_SORT_KEYS | orjson.OPT_NON_STR_KEYS
+                        data, option=orjson.OPT_SORT_KEYS | orjson.OPT_NON_STR_KEYS
                     )
                 else:
                     content = orjson.dumps(
                         data,
-                        option=orjson.OPT_INDENT_2 | orjson.OPT_SORT_KEYS | orjson.OPT_NON_STR_KEYS
+                        option=orjson.OPT_INDENT_2
+                        | orjson.OPT_SORT_KEYS
+                        | orjson.OPT_NON_STR_KEYS,
                     )
                 with open(file_path, "wb") as f:
                     f.write(content)
@@ -125,7 +142,13 @@ class JsonLoader:
             elif fallback_to_stdjson:
                 indent_stdjson: int | None = None if compact else 2
                 with open(file_path, "w", encoding="utf-8") as f:
-                    _std_json.dump(data, f, indent=indent_stdjson, ensure_ascii=False, sort_keys=True)
+                    _std_json.dump(
+                        data,
+                        f,
+                        indent=indent_stdjson,
+                        ensure_ascii=False,
+                        sort_keys=True,
+                    )
             else:
                 raise JsonSaveError(file_path, "没有可用的JSON序列化库")
         except (ValueError, TypeError) as e:
