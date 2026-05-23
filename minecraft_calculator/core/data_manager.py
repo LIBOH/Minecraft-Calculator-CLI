@@ -82,7 +82,7 @@ class DataManager:
         self,
         item_id: str,
         name: str,
-        ingredients: Dict[str, int],
+        ingredients: Optional[Dict[str, int]] = None,
         result: int = 1,
         stack_size: int = 64,
         mod_id: str = "vanilla",
@@ -92,12 +92,23 @@ class DataManager:
         if not name:
             raise InvalidInputError("物品名称不能为空")
 
-        item_data = {
-            "name": name,
-            "stack": stack_size,
-            "recipes": [{"ingredients": ingredients, "result": result}],
-            "_source_mod": mod_id,
-        }
+        if ingredients is None:
+            ingredients = {}
+
+        if ingredients:
+            item_data = {
+                "name": name,
+                "stack": stack_size,
+                "recipes": [{"ingredients": ingredients, "result": result}],
+                "_source_mod": mod_id,
+            }
+        else:
+            item_data = {
+                "name": name,
+                "stack": stack_size,
+                "recipes": [],
+                "_source_mod": mod_id,
+            }
 
         self._recipes[item_id] = item_data
         self._search_index.build(self._recipes)
@@ -122,12 +133,19 @@ class DataManager:
 
         if name is not None:
             self._recipes[item_id]["name"] = name
+        
         if ingredients is not None:
-            if self._recipes[item_id]["recipes"]:
+            if not ingredients:
+                self._recipes[item_id]["recipes"] = []
+            elif self._recipes[item_id]["recipes"]:
                 self._recipes[item_id]["recipes"][0]["ingredients"] = ingredients
+            else:
+                self._recipes[item_id]["recipes"] = [{"ingredients": ingredients, "result": result or 1}]
+        
         if result is not None:
             if self._recipes[item_id]["recipes"]:
                 self._recipes[item_id]["recipes"][0]["result"] = result
+        
         if stack_size is not None:
             self._recipes[item_id]["stack"] = stack_size
 

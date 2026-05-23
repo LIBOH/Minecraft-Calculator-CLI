@@ -124,3 +124,8 @@ class RecipeManager:
         if mod_id in self._loaded_mods:
             self._loaded_mods.remove(mod_id)
         self._load_recipes_from_data_manager()
+
+    def reload(self) -> None:
+        """重新加载所有配方数据"""
+        self._name_to_id.clear()
+        self._load_recipes_from_data_manager()

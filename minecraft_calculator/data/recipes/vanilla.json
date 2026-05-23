@@ -1,1 +1,859 @@
-{"items":{"activator_rail":{"name":"激活铁轨","recipes":[{"ingredients":{"iron_ingot":6,"redstone_torch":1,"stick":2},"result":6}],"stack":64},"andesite":{"name":"安山岩","recipes":[],"stack":64},"armor_stand":{"name":"盔甲架","recipes":[{"ingredients":{"smooth_stone_slab":1,"stick":6},"result":1}],"stack":16},"barrel":{"name":"木桶","recipes":[{"ingredients":{"planks":6,"wooden_slab":2},"result":1}],"stack":64},"calibrated_sculk_sensor":{"name":"校频幽匿感测体","recipes":[{"ingredients":{"amethyst_shard":3,"sculk_sensor":1},"result":1}],"stack":64},"cauldron":{"name":"炼药锅","recipes":[{"ingredients":{"iron_ingot":7},"result":1}],"stack":64},"chest":{"name":"箱子","recipes":[{"ingredients":{"planks":8},"result":1}],"stack":64},"chest_boat":{"name":"木运输船","recipes":[{"ingredients":{"boat":1,"chest":1},"result":1}],"stack":64},"chest_minecart":{"name":"运输矿车","recipes":[{"ingredients":{"chest":1,"minecart":1},"result":1}],"stack":64},"chest_raft":{"name":"运输竹筏","recipes":[{"ingredients":{"chest":1,"raft":1},"result":1}],"stack":64},"chiseled_bookshelf":{"name":"雕纹书架","recipes":[{"ingredients":{"planks":6,"wooden_slab":3},"result":1}],"stack":64},"comparator":{"name":"红石比较器","recipes":[{"ingredients":{"quartz":1,"redstone_torch":3,"stone":3},"result":1}],"stack":64},"composter":{"name":"堆肥桶","recipes":[{"ingredients":{"wooden_slab":7},"result":1}],"stack":64},"copper_block":{"name":"铜块","recipes":[],"stack":64},"copper_ingot":{"name":"铜锭","recipes":[{"ingredients":{"copper_block":1},"result":9}],"stack":64},"copper_nugget":{"name":"铜粒","recipes":[{"ingredients":{"copper_ingot":1},"result":9}],"stack":64},"daylight_detector":{"name":"阳光探测器","recipes":[{"ingredients":{"glass":3,"quartz":3,"wooden_slab":3},"result":1}],"stack":64},"detector_rail":{"name":"探测铁轨","recipes":[{"ingredients":{"iron_ingot":6,"redstone":1,"stone_pressure_plate":1},"result":6}],"stack":64},"dispenser":{"name":"发射器","recipes":[{"ingredients":{"bow":1,"cobblestone":7,"redstone":1},"result":1}],"stack":64},"door":{"name":"门","recipes":[{"ingredients":{"planks":6},"result":3}],"stack":64},"dropper":{"name":"投掷器","recipes":[{"ingredients":{"cobblestone":7,"redstone":1},"result":1}],"stack":64},"fence_gate":{"name":"栅栏门","recipes":[{"ingredients":{"planks":2,"stick":4},"result":1}],"stack":64},"furnace":{"name":"熔炉","recipes":[{"ingredients":{"cobblestone":8},"result":1}],"stack":64},"furnace_minecart":{"name":"动力矿车","recipes":[{"ingredients":{"furnace":1,"minecart":1},"result":1}],"stack":64},"gold_block":{"name":"金块","recipes":[],"stack":64},"gold_ingot":{"name":"金锭","recipes":[{"ingredients":{"gold_block":1},"result":9}],"stack":64},"gold_nugget":{"name":"金粒","recipes":[{"ingredients":{"gold_ingot":1},"result":9}],"stack":64},"heavy_weighted_pressure_plate":{"name":"重质测重压力板","recipes":[{"ingredients":{"iron_ingot":2},"result":1}],"stack":64},"honey_block":{"name":"蜂蜜块","recipes":[{"ingredients":{"honey_bottle":4},"result":1}],"stack":64},"hopper":{"name":"漏斗","recipes":[{"ingredients":{"chest":1,"iron_ingot":5},"result":1}],"stack":64},"hopper_minecart":{"name":"漏斗矿车","recipes":[{"ingredients":{"hopper":1,"minecart":1},"result":1}],"stack":64},"iron_block":{"name":"铁块","recipes":[],"stack":64},"iron_door":{"name":"铁门","recipes":[{"ingredients":{"iron_ingot":6},"result":3}],"stack":64},"iron_ingot":{"name":"铁锭","recipes":[{"ingredients":{"iron_block":1},"result":9}],"stack":64},"iron_nugget":{"name":"铁粒","recipes":[{"ingredients":{"iron_ingot":1},"result":9}],"stack":64},"iron_trapdoor":{"name":"铁活板门","recipes":[{"ingredients":{"iron_ingot":4},"result":1}],"stack":64},"lectern":{"name":"讲台","recipes":[{"ingredients":{"bookshelf":1,"wooden_slab":4},"result":1}],"stack":64},"lever":{"name":"拉杆","recipes":[{"ingredients":{"cobblestone":1,"stick":1},"result":1}],"stack":64},"light_weighted_pressure_plate":{"name":"轻质测重压力板","recipes":[{"ingredients":{"gold_ingot":2},"result":1}],"stack":64},"lightning_rod":{"name":"避雷针","recipes":[{"ingredients":{"copper_ingot":3},"result":1}],"stack":64},"logs":{"name":"原木","recipes":[],"stack":64},"minecart":{"name":"矿车","recipes":[{"ingredients":{"iron_ingot":5},"result":1}],"stack":64},"netherite_ingot":{"name":"下界合金锭","recipes":[{"ingredients":{"gold_ingot":4,"netherite_scrap":4},"result":1},{"ingredients":{"netherite_block":1},"result":9}],"stack":64},"note_block":{"name":"音符盒","recipes":[{"ingredients":{"planks":8,"redstone":1},"result":1}],"stack":64},"observer":{"name":"侦测器","recipes":[{"ingredients":{"cobblestone":6,"quartz":1,"redstone":2},"result":1}],"stack":64},"piston":{"name":"活塞","recipes":[{"ingredients":{"cobblestone":4,"iron_ingot":1,"planks":3,"redstone":1},"result":1}],"stack":64},"planks":{"name":"木板","recipes":[{"ingredients":{"logs":1},"result":4}],"stack":64},"powered_rail":{"name":"动力铁轨","recipes":[{"ingredients":{"gold_ingot":6,"redstone":1,"stick":1},"result":6}],"stack":64},"quartz":{"name":"石英","recipes":[],"stack":64},"rail":{"name":"铁轨","recipes":[{"ingredients":{"iron_ingot":6,"stick":1},"result":16}],"stack":64},"redstone":{"name":"红石粉","recipes":[],"stack":64},"redstone_block":{"name":"红石块","recipes":[{"ingredients":{"redstone":9},"result":1}],"stack":64},"redstone_lamp":{"name":"红石灯","recipes":[{"ingredients":{"glowstone":1,"redstone":4},"result":1}],"stack":64},"redstone_torch":{"name":"红石火把","recipes":[{"ingredients":{"redstone":1,"stick":1},"result":1}],"stack":64},"repeater":{"name":"红石中继器","recipes":[{"ingredients":{"redstone":1,"redstone_torch":2,"stone":3},"result":1}],"stack":64},"slime_block":{"name":"黏液块","recipes":[{"ingredients":{"slime_ball":9},"result":1}],"stack":64},"stick":{"name":"木棍","recipes":[{"ingredients":{"planks":2},"result":4}],"stack":64},"sticky_piston":{"name":"黏性活塞","recipes":[{"ingredients":{"piston":1,"slime_ball":1},"result":1}],"stack":64},"stone":{"name":"石头","recipes":[],"stack":64},"stone_pressure_plate":{"name":"石制压力板","recipes":[{"ingredients":{"stone":2},"result":1}],"stack":64},"stripped_logs":{"name":"去皮原木","recipes":[],"stack":64},"target_block":{"name":"标靶","recipes":[{"ingredients":{"hay_block":1,"redstone":4},"result":1}],"stack":64},"tnt":{"name":"TNT","recipes":[{"ingredients":{"gunpowder":5,"sand":4},"result":1}],"stack":64},"tnt_minecart":{"name":"TNT矿车","recipes":[{"ingredients":{"minecart":1,"tnt":1},"result":1}],"stack":64},"trapdoor":{"name":"活板门","recipes":[{"ingredients":{"planks":6},"result":2}],"stack":64},"trapper_chest":{"name":"陷阱箱","recipes":[{"ingredients":{"chest":1,"tripwire_hook":1},"result":1}],"stack":64},"tripwire_hook":{"name":"拌线钩","recipes":[{"ingredients":{"iron_ingot":1,"planks":1,"stick":1},"result":2}],"stack":64},"wooden_pressure_plate":{"name":"木制压力板","recipes":[{"ingredients":{"planks":2},"result":1}],"stack":64}}}
+{
+    "items": {
+        "activator_rail": {
+            "name": "激活铁轨",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 6,
+                        "redstone_torch": 1,
+                        "stick": 2
+                    },
+                    "result": 6
+                }
+            ],
+            "stack": 64
+        },
+        "andesite": {
+            "name": "安山岩",
+            "recipes": [],
+            "stack": 64
+        },
+        "armor_stand": {
+            "name": "盔甲架",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "smooth_stone_slab": 1,
+                        "stick": 6
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 16
+        },
+        "barrel": {
+            "name": "木桶",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 6,
+                        "wooden_slab": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "calibrated_sculk_sensor": {
+            "name": "校频幽匿感测体",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "amethyst_shard": 3,
+                        "sculk_sensor": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "cauldron": {
+            "name": "炼药锅",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 7
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "chest": {
+            "name": "箱子",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 8
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "chest_boat": {
+            "name": "木运输船",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "boat": 1,
+                        "chest": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "chest_minecart": {
+            "name": "运输矿车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chest": 1,
+                        "minecart": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "chest_raft": {
+            "name": "运输竹筏",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chest": 1,
+                        "raft": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "chiseled_bookshelf": {
+            "name": "雕纹书架",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 6,
+                        "wooden_slab": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "cobblestone": {
+            "name": "圆石",
+            "recipes": [],
+            "stack": 64
+        },
+        "comparator": {
+            "name": "红石比较器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "quartz": 1,
+                        "redstone_torch": 3,
+                        "stone": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "composter": {
+            "name": "堆肥桶",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "wooden_slab": 7
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "copper_block": {
+            "name": "铜块",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "copper_ingot": {
+            "name": "铜锭",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_block": 1
+                    },
+                    "result": 9
+                },
+                {
+                    "ingredients": {
+                        "copper_nugget": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "copper_nugget": {
+            "name": "铜粒",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "daylight_detector": {
+            "name": "阳光探测器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "glass": 3,
+                        "quartz": 3,
+                        "wooden_slab": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "detector_rail": {
+            "name": "探测铁轨",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 6,
+                        "redstone": 1,
+                        "stone_pressure_plate": 1
+                    },
+                    "result": 6
+                }
+            ],
+            "stack": 64
+        },
+        "dispenser": {
+            "name": "发射器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "bow": 1,
+                        "cobblestone": 7,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "door": {
+            "name": "门",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 6
+                    },
+                    "result": 3
+                }
+            ],
+            "stack": 64
+        },
+        "dropper": {
+            "name": "投掷器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cobblestone": 7,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "fence_gate": {
+            "name": "栅栏门",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 2,
+                        "stick": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "furnace": {
+            "name": "熔炉",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cobblestone": 8
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "furnace_minecart": {
+            "name": "动力矿车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "furnace": 1,
+                        "minecart": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "gold_block": {
+            "name": "金块",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gold_ingot": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "gold_ingot": {
+            "name": "金锭",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gold_block": 1
+                    },
+                    "result": 9
+                },
+                {
+                    "ingredients": {
+                        "gold_nugget": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "gold_nugget": {
+            "name": "金粒",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gold_ingot": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "heavy_weighted_pressure_plate": {
+            "name": "重质测重压力板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "honey_block": {
+            "name": "蜂蜜块",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "honey_bottle": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "hopper": {
+            "name": "漏斗",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chest": 1,
+                        "iron_ingot": 5
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "hopper_minecart": {
+            "name": "漏斗矿车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "hopper": 1,
+                        "minecart": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "iron_block": {
+            "name": "铁块",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "iron_door": {
+            "name": "铁门",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 6
+                    },
+                    "result": 3
+                }
+            ],
+            "stack": 64
+        },
+        "iron_ingot": {
+            "name": "铁锭",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_block": 1
+                    },
+                    "result": 9
+                },
+                {
+                    "ingredients": {
+                        "iron_nugget": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "iron_nugget": {
+            "name": "铁粒",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "iron_trapdoor": {
+            "name": "铁活板门",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "lectern": {
+            "name": "讲台",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "bookshelf": 1,
+                        "wooden_slab": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "lever": {
+            "name": "拉杆",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cobblestone": 1,
+                        "stick": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "light_weighted_pressure_plate": {
+            "name": "轻质测重压力板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gold_ingot": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "lightning_rod": {
+            "name": "避雷针",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "copper_ingot": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "logs": {
+            "name": "原木",
+            "recipes": [],
+            "stack": 64
+        },
+        "minecart": {
+            "name": "矿车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 5
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "netherite_ingot": {
+            "name": "下界合金锭",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gold_ingot": 4,
+                        "netherite_scrap": 4
+                    },
+                    "result": 1
+                },
+                {
+                    "ingredients": {
+                        "netherite_block": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "note_block": {
+            "name": "音符盒",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 8,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "observer": {
+            "name": "侦测器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cobblestone": 6,
+                        "quartz": 1,
+                        "redstone": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "piston": {
+            "name": "活塞",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "cobblestone": 4,
+                        "iron_ingot": 1,
+                        "planks": 3,
+                        "redstone": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "planks": {
+            "name": "木板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "logs": 1
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "powered_rail": {
+            "name": "动力铁轨",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gold_ingot": 6,
+                        "redstone": 1,
+                        "stick": 1
+                    },
+                    "result": 6
+                }
+            ],
+            "stack": 64
+        },
+        "quartz": {
+            "name": "石英",
+            "recipes": [],
+            "stack": 64
+        },
+        "rail": {
+            "name": "铁轨",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 6,
+                        "stick": 1
+                    },
+                    "result": 16
+                }
+            ],
+            "stack": 64
+        },
+        "redstone": {
+            "name": "红石粉",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "redstone_block": 1
+                    },
+                    "result": 9
+                }
+            ],
+            "stack": 64
+        },
+        "redstone_block": {
+            "name": "红石块",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "redstone": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "redstone_lamp": {
+            "name": "红石灯",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "glowstone": 1,
+                        "redstone": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "redstone_torch": {
+            "name": "红石火把",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "redstone": 1,
+                        "stick": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "repeater": {
+            "name": "红石中继器",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "redstone": 1,
+                        "redstone_torch": 2,
+                        "stone": 3
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "slime_block": {
+            "name": "黏液块",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "slime_ball": 9
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stick": {
+            "name": "木棍",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 2
+                    },
+                    "result": 4
+                }
+            ],
+            "stack": 64
+        },
+        "sticky_piston": {
+            "name": "黏性活塞",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "piston": 1,
+                        "slime_ball": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stone": {
+            "name": "石头",
+            "recipes": [],
+            "stack": 64
+        },
+        "stone_pressure_plate": {
+            "name": "石制压力板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "stone": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "stripped_logs": {
+            "name": "去皮原木",
+            "recipes": [],
+            "stack": 64
+        },
+        "target_block": {
+            "name": "标靶",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "hay_block": 1,
+                        "redstone": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "tnt": {
+            "name": "TNT",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "gunpowder": 5,
+                        "sand": 4
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "tnt_minecart": {
+            "name": "TNT矿车",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "minecart": 1,
+                        "tnt": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "trapdoor": {
+            "name": "活板门",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 6
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "trapper_chest": {
+            "name": "陷阱箱",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "chest": 1,
+                        "tripwire_hook": 1
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        },
+        "tripwire_hook": {
+            "name": "拌线钩",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "iron_ingot": 1,
+                        "planks": 1,
+                        "stick": 1
+                    },
+                    "result": 2
+                }
+            ],
+            "stack": 64
+        },
+        "wooden_pressure_plate": {
+            "name": "木制压力板",
+            "recipes": [
+                {
+                    "ingredients": {
+                        "planks": 2
+                    },
+                    "result": 1
+                }
+            ],
+            "stack": 64
+        }
+    }
+}

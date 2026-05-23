@@ -25,8 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "click>=8.4.0",
-    "pyyaml>=6.0.3",
-    "colorama>=0.4.6",
+    "rich>=13.7.0",
 ]
 
 [project.optional-dependencies]

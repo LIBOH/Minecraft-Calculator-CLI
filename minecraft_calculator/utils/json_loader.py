@@ -33,12 +33,10 @@ class BackupManager:
             return
 
         if backup_dir:
-            # 如果 backup_dir 是相对路径，我们需要结合 file_path 的目录作为基准
             if not os.path.isabs(backup_dir):
                 file_dir = os.path.dirname(file_path)
                 backup_dir = os.path.join(file_dir, backup_dir)
         else:
-            # 默认路径
             backup_dir = f"{file_path}.backups"
 
         os.makedirs(backup_dir, exist_ok=True)

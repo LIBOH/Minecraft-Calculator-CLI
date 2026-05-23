@@ -21,8 +21,7 @@ class PathsConfig:
 class BackupConfig:
     max_backups: int
     enabled: bool
-    recipes_backup_dir: Optional[str] = None
-    inventory_backup_dir: Optional[str] = None
+    backup_root: Optional[str] = None
 
 
 @dataclass
@@ -79,12 +78,7 @@ class ConfigManager:
             mods_recipes_dir="mods",
             app_config_file="app_config.json",
         )
-        backup = BackupConfig(
-            max_backups=3,
-            enabled=True,
-            recipes_backup_dir=None,
-            inventory_backup_dir=None
-        )
+        backup = BackupConfig(max_backups=3, enabled=True, backup_root=None)
         io = IOConfig(max_file_size=10485760, compact_json=True)
         json_loader = JsonLoaderConfig(
             prefer_orjson=True, fallback_to_ujson=True, fallback_to_stdjson=True
@@ -106,8 +100,7 @@ class ConfigManager:
         backup = BackupConfig(
             max_backups=backup_data.get("max_backups", 3),
             enabled=backup_data.get("enabled", True),
-            recipes_backup_dir=backup_data.get("recipes_backup_dir", None),
-            inventory_backup_dir=backup_data.get("inventory_backup_dir", None),
+            backup_root=backup_data.get("backup_root", None),
         )
         io_data = data.get("io", {})
         io = IOConfig(
@@ -137,8 +130,7 @@ class ConfigManager:
             "backup": {
                 "max_backups": self._config.backup.max_backups,
                 "enabled": self._config.backup.enabled,
-                "recipes_backup_dir": self._config.backup.recipes_backup_dir,
-                "inventory_backup_dir": self._config.backup.inventory_backup_dir,
+                "backup_root": self._config.backup.backup_root,
             },
             "io": {
                 "max_file_size": self._config.io.max_file_size,
@@ -151,7 +143,17 @@ class ConfigManager:
             },
         }
         os.makedirs(os.path.dirname(config_path), exist_ok=True)
-        JsonLoader.save(config_path, data, compact=self._config.io.compact_json)
+        JsonLoader.save(
+            config_path,
+            data,
+            compact=self._config.io.compact_json,
+            prefer_orjson=self._config.json_loader.prefer_orjson,
+            fallback_to_ujson=self._config.json_loader.fallback_to_ujson,
+            fallback_to_stdjson=self._config.json_loader.fallback_to_stdjson,
+            backup_enabled=self._config.backup.enabled,
+            max_backups=self._config.backup.max_backups,
+            backup_dir=self.get_backup_path("config"),
+        )
 
     @property
     def config(self) -> AppConfig:
@@ -213,6 +215,16 @@ class ConfigManager:
 
     def get_app_config_path(self) -> str:
         return os.path.join(self.get_data_path(), self._config.paths.app_config_file)
+
+    def get_backup_path(self, category: str) -> str:
+        if self._config.backup.backup_root:
+            return os.path.join(
+                self._base_dir,
+                "minecraft_calculator",
+                self._config.backup.backup_root,
+                f"{category}s",
+            )
+        return os.path.join(self.get_data_path(), f"{category}_backups")
 
     def get_enabled_mods(self) -> list[str]:
         return list(self._enabled_mods)

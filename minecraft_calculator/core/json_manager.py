@@ -192,7 +192,7 @@ class JsonManager:
             fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
             backup_enabled=self._config_manager.config.backup.enabled,
             max_backups=self._config_manager.config.backup.max_backups,
-            backup_dir=self._config_manager.config.backup.inventory_backup_dir,
+            backup_dir=self._config_manager.get_backup_path("inventory"),
         )
 
     def _save_recipe(
@@ -234,7 +234,7 @@ class JsonManager:
             fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
             backup_enabled=self._config_manager.config.backup.enabled,
             max_backups=self._config_manager.config.backup.max_backups,
-            backup_dir=self._config_manager.config.backup.recipes_backup_dir,
+            backup_dir=self._config_manager.get_backup_path(mod_id),
         )
 
     def _remove_recipe(self, item_id: str, mod_id: str):
@@ -268,7 +268,7 @@ class JsonManager:
                 fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
                 backup_enabled=self._config_manager.config.backup.enabled,
                 max_backups=self._config_manager.config.backup.max_backups,
-                backup_dir=self._config_manager.config.backup.recipes_backup_dir,
+                backup_dir=self._config_manager.get_backup_path(mod_id),
             )
 
     def _save_all_recipes(self, recipes: Dict[str, Dict[str, Any]]):
@@ -297,7 +297,7 @@ class JsonManager:
                 fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
                 backup_enabled=self._config_manager.config.backup.enabled,
                 max_backups=self._config_manager.config.backup.max_backups,
-                backup_dir=self._config_manager.config.backup.recipes_backup_dir,
+                backup_dir=self._config_manager.get_backup_path("vanilla"),
             )
 
         for mod_id, mod_data in mod_recipes.items():
@@ -312,5 +312,5 @@ class JsonManager:
                 fallback_to_stdjson=self._config_manager.config.json_loader.fallback_to_stdjson,
                 backup_enabled=self._config_manager.config.backup.enabled,
                 max_backups=self._config_manager.config.backup.max_backups,
-                backup_dir=self._config_manager.config.backup.recipes_backup_dir,
+                backup_dir=self._config_manager.get_backup_path(mod_id),
             )
